@@ -1,21 +1,38 @@
-/* header */
+* {
+    padding: 0;
+    margin: 0;
+}
 
-
-/* Auto layout */
 header {
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: flex-start;
-padding: 20px 30px 0px;
+    background-color: #4F88EF;
+    font-family: Proxima Nova;
+}
 
-position: absolute;
-width: 375px;
-height: 772px;
-left: 0px;
-top: 40px;
+a {
+    font-family: bello;
+    color: white;
+    text-decoration: none;
+    justify-content: flex-start;
+}
 
-/* Blue-1 */
+ul {
+    display: flex;
+    color: white;
+    text-align: center;
+    list-style-type: none;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
 
-background: #4F88EF;
+.close-menu-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+li {
+    
+}
+
+li:hover {
+    text-decoration: underline;
 }
