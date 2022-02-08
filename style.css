@@ -87,12 +87,20 @@ li > a:hover {
     .nav-menu {
         flex-direction: row;
     }
+    .desktop {
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav__accountbutton {
+        background: url(./public/images/arrow-down.svg) no-repeat center;
+    }
 }
 
-.nav__accountlogin {
+.nav__accountdisplay {
     padding: 10px;
     background-color: red;
     width: 148px;
     height: 40px;
     border-radius: 25px;
 }
+
