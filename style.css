@@ -3,49 +3,67 @@
 }
 
 * {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Proxima Nova Regular;
+    src: url(./public/fonts/proxima-nova/proxima-nova-regular.ttf);
+}
+
+@font-face {
+    font-family: Bello Script;
+    src: url(./public/fonts/bello-script.ttf);
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #4F88EF;
-    align-items: center;
 
+    align-items: center;
+    background-color: #4F88EF;
+    display: flex;
     height: var(--header-height);
+    justify-content: space-between;
 }
 
-.collapsible-menu {
-    height: calc(100vh - var(--header-height));
-    display: flex;
-    text-align: center;
-    list-style-type: none;
-    flex-direction: column;
-    /* justify-content: space-evenly; */
+.nav-menu {
     
-    font-family: Proxima Nova;
+    background-color: #4F88EF;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-family: Proxima Nova Regular;
     font-size: 24px;
     font-weight: 400;
-    color: white;
-    background-color: #4F88EF;
+    height: calc(100vh - var(--header-height));
+    list-style-type: none;
+    text-align: center;
 }
 
-.logo {
+.header__logo {
     color: #FFFFFF;
-    text-decoration: none;
+    font-family: Bello Script;
     font-size: 26px;
-    font-family: bello;
-    margin: 10vw;
+    margin: 30px;
+    text-decoration: none;
 }
 
-.togglebutton {
-    color: #FFFFFF;
-    background: transparent;
+.header__button {
+    background: url(./public/images/close.svg) no-repeat center;
     border: none;
+    color: #FFFFFF;
     cursor: pointer;
     margin: 10vw;
+    padding: 10px;
+}
+
+.togglebutton--hamburger {
+    background: url(./public/images/hamburger.svg) no-repeat center;
+}
+
+li > a {
+    width: fit-content;
 }
 
 li:active {
@@ -53,14 +71,28 @@ li:active {
 }
 
 li > a:hover {
-    border-radius: 2px;
     background-color: #1166A5;
+    border-radius: 2px;
 }
 
-.collapsible-menu > li > a {
-    display: block;
-    margin-bottom: 10px;
-    padding: 13px 20px 13px 20px;
-    text-decoration: none;
+.nav-menu > li > a {
     color: #FFFFFF;
+    display: block;
+    padding: 13px 20px;
+    text-decoration: none;
+    margin: 0 auto 10px auto;
+}
+
+@media screen and (min-width: 1024px) {
+    .nav-menu {
+        flex-direction: row;
+    }
+}
+
+.nav__accountlogin {
+    padding: 10px;
+    background-color: red;
+    width: 148px;
+    height: 40px;
+    border-radius: 25px;
 }
