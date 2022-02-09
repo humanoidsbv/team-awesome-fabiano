@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    align-items: center;
     background-color: #4F88EF;
     display: flex;
-    justify-content: space-between;
     height: 70px;
-    align-items: center;
+    justify-content: space-between;
 
     @media screen and (min-width: 1024px) {
         display: flex;
@@ -14,11 +14,11 @@ export const Container = styled.div`
 `;
 
 export const ToggleButton = styled.button`
-        border: none;
         background-color: transparent;
+        border: none;
         display: flex;
-        padding: 10px 30px;
         margin-left: auto;
+        padding: 10px 30px;
 
     @media screen and (min-width: 1024px) {
         display: none;
@@ -26,27 +26,27 @@ export const ToggleButton = styled.button`
 `
 
 export const Logo = styled.a`
-        display: flex;
         color: #FFFFFF;
-        text-decoration: none;
+        display: flex;
         font-family: bello;
         font-size: 26px;
         padding: 10px 30px;
+        text-decoration: none;
 `;
 
 export const MenuList = styled.ul`
     background-color:#4F88EF;
-    display: ${props => props.isActive ? "flex" : "none"};
-    color: #FFFFFF;
-    list-style: none;
-    flex-direction: column;
-    padding: 70px 0 0 0;
-    margin: 0;
-    position: absolute;
-    top: 0px;
-    left: 0;
-    right: 0;
     bottom: 0;
+    color: #FFFFFF;
+    display: ${props => props.isActive ? "flex" : "none"};
+    flex-direction: column;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 70px 0 0 0;
+    position: absolute;
+    right: 0;
+    top: 0px;
     z-index: -1;
     
     li {
@@ -55,28 +55,28 @@ export const MenuList = styled.ul`
     }
 
    a {
-    text-decoration: none;
     color: #FFFFFF;
     font-family: proxima nova;
     font-size: 24px;
     font-weight: 400;
     padding: 13px 20px;
-   }
+    text-decoration: none;
 
-   a:hover {
+    :hover {
     background-color: #1166A5;
     border-radius: 2px;
    }
 
-   a:active {
+   :active {
     text-decoration: underline;
+   }
    }
 
    @media screen and (min-width: 1024px) {
-    flex-direction: row;
-    position: static;
     display: flex;
+    flex-direction: row;
     padding: 0;
+    position: static;
     z-index: 0;
     
     a {
@@ -85,4 +85,3 @@ export const MenuList = styled.ul`
     }
    }
 `;
-

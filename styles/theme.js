@@ -11,3 +11,4 @@ export const theme = {
     desktop: 'min-width: 1024px',
     desktopL: 'min-width: 1440px',
   };
+  

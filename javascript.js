@@ -8,4 +8,3 @@ toggleButton.classList.toggle("togglebutton--hamburger");
       menu.style.display = "none";
     }
   });
-
