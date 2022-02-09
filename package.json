@@ -1,0 +1,35 @@
+{
+  "name": "team-awesome-fabiano",
+  "version": "1.0.0",
+  "description": "team awesome fabiano project",
+  "main": "javascript.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humanoidsbv/team-awesome-fabiano.git"
+  },
+  "keywords": [
+    "team",
+    "awesome",
+    "fabiano"
+  ],
+  "author": "fabiano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humanoidsbv/team-awesome-fabiano/issues"
+  },
+  "homepage": "https://github.com/humanoidsbv/team-awesome-fabiano#readme",
+  "dependencies": {
+    "next": "^12.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-react-svg": "^2.0.1"
+  }
+}
