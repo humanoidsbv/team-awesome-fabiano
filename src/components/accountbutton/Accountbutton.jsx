@@ -1,10 +1,11 @@
+import styled from "styled-components";
+
 const Accountbutton = () => {
     return (
-        <>
-            <canvas>account login</canvas>
-            <button className="nav__accountbutton"></button>
-        </>
-    );
+        <Styled.Container>
+            test
+        </Styled.Container>
+        );
 }
 
 export default Accountbutton;

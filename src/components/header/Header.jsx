@@ -7,7 +7,6 @@ const Header = () => {
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => setIsActive(!isActive);
     const toggleMenu = isActive ? <CloseIcon /> : <Hamburger />;
-    //const noToggle = min-width >= 1024px ?  : ;
 
     return (
         <Styled.Container>

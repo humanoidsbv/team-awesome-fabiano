@@ -40,14 +40,15 @@ export const MenuList = styled.ul`
     color: #FFFFFF;
     list-style: none;
     flex-direction: column;
-    padding: 0;
+    padding: 70px 0 0 0;
     margin: 0;
     position: absolute;
-    top: 70px;
+    top: 0px;
     left: 0;
     right: 0;
     bottom: 0;
-
+    z-index: -1;
+    
     li {
         margin: 20px auto 20px auto;
         width: fit-content;
@@ -75,6 +76,8 @@ export const MenuList = styled.ul`
     flex-direction: row;
     position: static;
     display: flex;
+    padding: 0;
+    z-index: 0;
     
     a {
         font-size: 14px;
