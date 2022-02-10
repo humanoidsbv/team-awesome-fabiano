@@ -1,13 +1,12 @@
-import * as Styled from "./Header.styled.js";
+import * as Styled from "./Header.styled";
 import CloseIcon from "../../../public/images/close.svg";
 import Hamburger from "../../../public/images/hamburger.svg";
 import React, { useState } from "react";
-import Accountbutton from "../accountbutton/Accountbutton.jsx";
+import { AccountButton } from "../accountbutton/AccountButton";
 
-const Header = () => {
+export const Header = (): React.ReactElement => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => setIsActive(!isActive);
-  const toggleMenu = isActive ? <CloseIcon /> : <Hamburger />;
 
   return (
     <Styled.Container>
@@ -29,12 +28,12 @@ const Header = () => {
           <a href="/">Documents</a>
         </li>
       </Styled.MenuList>
-      <Styled.ToggleButton onClick={handleClick}>{toggleMenu}</Styled.ToggleButton>
+      <Styled.ToggleButton onClick={handleClick}>
+        {isActive ? <CloseIcon /> : <Hamburger />}
+      </Styled.ToggleButton>
       <Styled.Accountbutton>
-        <Accountbutton />
+        <AccountButton />
       </Styled.Accountbutton>
     </Styled.Container>
   );
 };
-
-export default Header;

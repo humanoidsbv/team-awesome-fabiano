@@ -34,7 +34,7 @@ export const Logo = styled.a`
   text-decoration: none;
 `;
 
-export const MenuList = styled.ul`
+export const MenuList = styled.ul<{ isActive: boolean }>`
   background-color: #4f88ef;
   bottom: 0;
   color: #ffffff;
