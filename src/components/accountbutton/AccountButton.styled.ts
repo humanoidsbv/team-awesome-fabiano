@@ -8,4 +8,13 @@ export const Container = styled.div`
   width: 148px;
 `;
 
-export const ProfilePic = styled.div``;
+export const Logos = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const ProfilePic = styled.img`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+`;

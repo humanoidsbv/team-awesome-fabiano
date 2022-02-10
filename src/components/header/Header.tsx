@@ -1,10 +1,10 @@
 import * as Styled from "./Header.styled";
 import CloseIcon from "../../../public/images/close.svg";
-import Hamburger from "../../../public/images/hamburger.svg";
+import HamburgerIcon from "../../../public/images/hamburger.svg";
 import React, { useState } from "react";
 import { AccountButton } from "../accountbutton/AccountButton";
 
-export const Header = (): React.ReactElement => {
+export const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => setIsActive(!isActive);
 
@@ -29,7 +29,7 @@ export const Header = (): React.ReactElement => {
         </li>
       </Styled.MenuList>
       <Styled.ToggleButton onClick={handleClick}>
-        {isActive ? <CloseIcon /> : <Hamburger />}
+        {isActive ? <CloseIcon /> : <HamburgerIcon />}
       </Styled.ToggleButton>
       <Styled.Accountbutton>
         <AccountButton />
