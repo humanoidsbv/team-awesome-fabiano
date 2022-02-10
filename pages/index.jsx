@@ -5,10 +5,10 @@ import GlobalStyle from "../styles/global";
 const Homepage = () => {
   return (
     <>
-    <GlobalStyle />
-    <Header />
+      <GlobalStyle />
+      <Header />
     </>
   );
-}
+};
 
 export default Homepage;

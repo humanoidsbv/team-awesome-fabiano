@@ -1,104 +1,103 @@
 :root {
-    --header-height: 70px;
+  --header-height: 70px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
-    font-family: Proxima Nova Regular;
-    src: url(./public/fonts/proxima-nova/proxima-nova-regular.ttf);
+  font-family: Proxima Nova Regular;
+  src: url(./public/fonts/proxima-nova/proxima-nova-regular.ttf);
 }
 
 @font-face {
-    font-family: Bello Script;
-    src: url(./public/fonts/bello-script.ttf);
+  font-family: Bello Script;
+  src: url(./public/fonts/bello-script.ttf);
 }
 
 header {
-
-    align-items: center;
-    background-color: #4F88EF;
-    display: flex;
-    height: var(--header-height);
-    justify-content: space-between;
+  align-items: center;
+  background-color: #4f88ef;
+  display: flex;
+  height: var(--header-height);
+  justify-content: space-between;
 }
 
 .nav-menu {
-    background-color: #4F88EF;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-family: Proxima Nova Regular;
-    font-size: 24px;
-    font-weight: 400;
-    height: calc(100vh - var(--header-height));
-    list-style-type: none;
-    text-align: center;
+  background-color: #4f88ef;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: Proxima Nova Regular;
+  font-size: 24px;
+  font-weight: 400;
+  height: calc(100vh - var(--header-height));
+  list-style-type: none;
+  text-align: center;
 }
 
 .header__logo {
-    color: #FFFFFF;
-    font-family: Bello Script;
-    font-size: 26px;
-    margin: 30px;
-    text-decoration: none;
+  color: #ffffff;
+  font-family: Bello Script;
+  font-size: 26px;
+  margin: 30px;
+  text-decoration: none;
 }
 
 .header__button {
-    background: url(./public/images/close.svg) no-repeat center;
-    border: none;
-    color: #FFFFFF;
-    cursor: pointer;
-    margin: 10vw;
-    padding: 10px;
+  background: url(./public/images/close.svg) no-repeat center;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 10vw;
+  padding: 10px;
 }
 
 .togglebutton--hamburger {
-    background: url(./public/images/hamburger.svg) no-repeat center;
+  background: url(./public/images/hamburger.svg) no-repeat center;
 }
 
 li > a {
-    width: fit-content;
+  width: fit-content;
 }
 
 li:active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 li > a:hover {
-    background-color: #1166A5;
-    border-radius: 2px;
+  background-color: #1166a5;
+  border-radius: 2px;
 }
 
 .nav-menu > li > a {
-    color: #FFFFFF;
-    display: block;
-    padding: 13px 20px;
-    text-decoration: none;
-    margin: 0 auto 10px auto;
+  color: #ffffff;
+  display: block;
+  padding: 13px 20px;
+  text-decoration: none;
+  margin: 0 auto 10px auto;
 }
 
 @media screen and (min-width: 1024px) {
-    .nav-menu {
-        flex-direction: row;
-    }
-    .desktop {
-        display: flex;
-        justify-content: space-between;
-    }
-    .nav__accountbutton {
-        background: url(./public/images/arrow-down.svg) no-repeat center;
-    }
+  .nav-menu {
+    flex-direction: row;
+  }
+  .desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav__accountbutton {
+    background: url(./public/images/arrow-down.svg) no-repeat center;
+  }
 }
 
 .nav__accountdisplay {
-    padding: 10px;
-    background-color: red;
-    width: 148px;
-    height: 40px;
-    border-radius: 25px;
+  padding: 10px;
+  background-color: red;
+  width: 148px;
+  height: 40px;
+  border-radius: 25px;
 }
