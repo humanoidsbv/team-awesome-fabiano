@@ -4,8 +4,8 @@ export const Container = styled.div`
   align-items: center;
   background-color: transparent;
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px 30px;
+  justify-content: space-between;
+  padding: 0px 30px;
 
   @media screen and (max-width: 1024px) {
     display: none;
@@ -39,6 +39,8 @@ export const HumanoidsLogo = styled.img`
 `;
 
 export const ArrowDownIcon = styled.img`
-  display: flex;
+  cursor: pointer;
+  height: 6.59px;
   margin-left: 16.42px;
+  width: 11.17px;
 `;

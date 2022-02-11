@@ -17,6 +17,7 @@ export const Container = styled.div`
 export const ToggleButton = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
   display: flex;
   margin-left: auto;
   padding: 10px 30px;
