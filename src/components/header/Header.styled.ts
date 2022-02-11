@@ -87,7 +87,17 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
 `;
 
 export const Accountbutton = styled.div`
-  display: flex;
   margin-left: auto;
-  margin-right: 64px;
+  margin-right: 30px;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
+
+// export const Wrapper = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center
+//   background-color: #4f88ef;
+//   height: 70px;
+// `;
