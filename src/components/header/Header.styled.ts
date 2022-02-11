@@ -45,7 +45,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   left: 0;
   list-style: none;
   margin: 0;
-  padding: 70px 0 0 0;
+  padding-top: 70px;
   position: absolute;
   right: 0;
   top: 0;

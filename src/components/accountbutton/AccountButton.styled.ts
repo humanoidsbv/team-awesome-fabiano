@@ -39,7 +39,7 @@ export const HumanoidsLogo = styled.img`
 
 export const ArrowDownIcon = styled.img`
   cursor: pointer;
-  height: 6.59px;
-  margin-left: 16.42px;
-  width: 11.17px;
+  height: 6px;
+  margin-left: 16px;
+  width: 11px;
 `;
