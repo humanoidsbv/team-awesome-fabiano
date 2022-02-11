@@ -5,8 +5,8 @@ export const Container = styled.div`
   background-color: #4f88ef;
   display: flex;
   height: 70px;
-  width: 100vw;
   justify-content: space-between;
+  width: 100vw;
 
   @media screen and (min-width: 1024px) {
     display: flex;
