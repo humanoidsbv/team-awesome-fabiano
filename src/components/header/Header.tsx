@@ -9,8 +9,8 @@ export const Header = () => {
   const handleClick = () => setIsActive(!isActive);
 
   return (
-    <Styled.Wrapper>
-      <Styled.Container>
+    <Styled.Container>
+      <Styled.Wrapper>
         <Styled.Logo href="/">team awesome</Styled.Logo>
         <Styled.MenuList isActive={isActive}>
           <li>
@@ -32,8 +32,8 @@ export const Header = () => {
         <Styled.ToggleButton onClick={handleClick}>
           {isActive ? <CloseIcon /> : <HamburgerIcon />}
         </Styled.ToggleButton>
-      </Styled.Container>
+      </Styled.Wrapper>
       <AccountButton />
-    </Styled.Wrapper>
+    </Styled.Container>
   );
 };

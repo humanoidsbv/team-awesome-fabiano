@@ -5,6 +5,7 @@ export const Container = styled.div`
   background-color: #4f88ef;
   display: flex;
   height: 70px;
+  width: 100vw;
   justify-content: space-between;
 
   @media screen and (min-width: 1024px) {
@@ -46,7 +47,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   padding: 70px 0 0 0;
   position: absolute;
   right: 0;
-  top: 0px;
+  top: 0;
   z-index: -1;
 
   li {
@@ -91,5 +92,6 @@ export const Wrapper = styled.div`
   background-color: #4f88ef;
   display: flex;
   height: 70px;
-  justify-content: space-between;
+  justify-content: start;
+  width: 100vw;
 `;
