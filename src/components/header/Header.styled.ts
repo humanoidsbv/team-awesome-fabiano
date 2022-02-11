@@ -86,18 +86,10 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   }
 `;
 
-export const Accountbutton = styled.div`
-  margin-left: auto;
-  margin-right: 30px;
-  @media screen and (max-width: 1024px) {
-    display: none;
-  }
+export const Wrapper = styled.div`
+  align-items: center;
+  background-color: #4f88ef;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
 `;
-
-// export const Wrapper = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center
-//   background-color: #4f88ef;
-//   height: 70px;
-// `;
