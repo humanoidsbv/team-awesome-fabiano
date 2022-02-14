@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   height: 70px;
   justify-content: space-between;
+  width: 100vw;
 
   @media screen and (min-width: 1024px) {
     display: flex;
@@ -16,6 +17,7 @@ export const Container = styled.div`
 export const ToggleButton = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
   display: flex;
   margin-left: auto;
   padding: 10px 30px;
@@ -43,10 +45,10 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   left: 0;
   list-style: none;
   margin: 0;
-  padding: 70px 0 0 0;
+  padding-top: 70px;
   position: absolute;
   right: 0;
-  top: 0px;
+  top: 0;
   z-index: -1;
 
   li {
@@ -86,8 +88,11 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   }
 `;
 
-export const Accountbutton = styled.div`
+export const Wrapper = styled.div`
+  align-items: center;
+  background-color: #4f88ef;
   display: flex;
-  margin-left: auto;
-  margin-right: 64px;
+  height: 70px;
+  justify-content: start;
+  width: 100vw;
 `;
