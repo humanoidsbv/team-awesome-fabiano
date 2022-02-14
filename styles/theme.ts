@@ -1,6 +1,6 @@
 export const theme = {
   //Colors
-  backgroundPrimary: "#ffffff",
+  primaryWhite: "#ffffff",
   backgroundSecondary: "#4f88ef",
   backgroundSecondaryHover: "#1166a5",
   backgroundGrey: "#F2F2F2",
@@ -16,7 +16,7 @@ export const theme = {
   fontSecondary: "Bello",
 
   // Breakpoints
-  mobile: "max-width: 1024px",
-  mobileButton: "min-width: 500px",
+  mobileLarge: "max-width: 1024px",
+  mobileSmall: "min-width: 500px",
   desktop: "min-width: 1024px",
 };

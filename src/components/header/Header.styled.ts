@@ -28,7 +28,7 @@ export const ToggleButton = styled.button`
 `;
 
 export const Logo = styled.a`
-  color: ${({ theme }) => theme.backgroundPrimary};
+  color: ${({ theme }) => theme.primaryWhite};
   display: flex;
   font-family: ${({ theme }) => theme.fontSecondary};
   font-size: 26px;
@@ -39,7 +39,7 @@ export const Logo = styled.a`
 export const MenuList = styled.ul<{ isActive: boolean }>`
   background-color: ${({ theme }) => theme.backgroundSecondary};
   bottom: 0;
-  color: ${({ theme }) => theme.backgroundPrimary};
+  color: ${({ theme }) => theme.primaryWhite};
   display: ${(props) => (props.isActive ? "flex" : "none")};
   flex-direction: column;
   left: 0;
@@ -55,7 +55,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   }
 
   a {
-    color: ${({ theme }) => theme.backgroundPrimary};
+    color: ${({ theme }) => theme.primaryWhite};
     font-family: ${({ theme }) => theme.fontPrimary};
     font-size: 24px;
     padding: 13px 20px;

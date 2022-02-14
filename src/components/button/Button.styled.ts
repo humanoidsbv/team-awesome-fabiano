@@ -5,7 +5,7 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.primaryGreen};
   border-radius: 4px;
   border: none;
-  color: ${({ theme }) => theme.backgroundPrimary};
+  color: ${({ theme }) => theme.primaryWhite};
   column-gap: 15px;
   cursor: pointer;
   display: flex;
@@ -15,7 +15,7 @@ export const Button = styled.button`
   justify-content: center;
   width: 100%;
 
-  @media screen and (${({ theme }) => theme.desktop}) {
+  @media screen and (${({ theme }) => theme.mobileSmall}) {
     width: 190px;
   }
 

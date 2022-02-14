@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.backgroundPrimary};
+  background-color: ${({ theme }) => theme.primaryWhite};
   display: flex;
   flex-direction: column;
   height: auto;
   justify-content: space-between;
-  margin: 20px 20px;
+  margin: 20px;
   width: auto;
 
-  @media screen and (${({ theme }) => theme.mobileButton}) {
+  @media screen and (${({ theme }) => theme.mobileSmall}) {
     display: flex;
     flex-direction: row;
     height: 70px;
@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
   margin-bottom: 20px;
   width: 100%;
 
-  @media screen and (${({ theme }) => theme.mobileButton}) {
+  @media screen and (${({ theme }) => theme.mobileSmall}) {
     display: flex;
     gap: 20px;
     justify-content: flex-start;
@@ -43,7 +43,7 @@ export const Timesheets = styled.article`
 export const VerticalLine = styled.div`
   display: none;
 
-  @media screen and (${({ theme }) => theme.mobileButton}) {
+  @media screen and (${({ theme }) => theme.mobileSmall}) {
     color: ${({ theme }) => theme.grey700};
     display: flex;
     font-family: ${({ theme }) => theme.fontPrimary};

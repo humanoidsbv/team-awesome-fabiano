@@ -6,14 +6,14 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 0px 30px;
 
-  @media screen and (${({ theme }) => theme.mobile}) {
+  @media screen and (${({ theme }) => theme.mobileLarge}) {
     display: none;
   }
 `;
 
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.backgroundPrimary};
+  background-color: ${({ theme }) => theme.primaryWhite};
   border-radius: 20px;
   display: flex;
   height: 40px;
@@ -40,5 +40,7 @@ export const HumanoidsLogo = styled.img`
 export const ArrowDownIcon = styled.div`
   display: flex;
   cursor: pointer;
+  fill: #fff;
   margin-left: 16px;
+  width: 11px;
 `;

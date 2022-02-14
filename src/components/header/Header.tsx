@@ -1,7 +1,10 @@
 import * as Styled from "./Header.styled";
-import CloseIcon from "../../../public/images/close.svg";
-import HamburgerIcon from "../../../public/images/hamburger.svg";
+
+import CloseIcon from "../../../public/icons/close.svg";
+import HamburgerIcon from "../../../public/icons/hamburger.svg";
+
 import React, { useState } from "react";
+
 import { AccountButton } from "../accountbutton/AccountButton";
 
 export const Header = () => {
@@ -12,7 +15,7 @@ export const Header = () => {
     <Styled.Container>
       <Styled.Wrapper>
         <Styled.Logo href="/">team awesome</Styled.Logo>
-        <Styled.MenuList isActive={isActive}>
+        <Styled.MenuList {...{ isActive }}>
           <li>
             <a href="/">Timesheets</a>
           </li>

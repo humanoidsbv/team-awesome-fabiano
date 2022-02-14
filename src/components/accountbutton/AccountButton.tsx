@@ -1,15 +1,16 @@
 import * as Styled from "./AccountButton.styled";
-import ArrowDownIcon from "../../../public/images/arrow-down.svg";
+
+import ArrowDownIcon from "../../../public/icons/arrow-down.svg";
 
 export const AccountButton = () => {
   return (
     <Styled.Container>
       <Styled.Wrapper>
-        <Styled.HumanoidsLogo src="/images/humanoids_logo.svg" />
+        <Styled.HumanoidsLogo src="/icons/humanoids_logo.svg" />
         <Styled.ProfilePic src="/images/amijs.jpg" />
       </Styled.Wrapper>
       <Styled.ArrowDownIcon>
-        <ArrowDownIcon fill="#fff" width="11px" />
+        <ArrowDownIcon />
       </Styled.ArrowDownIcon>
     </Styled.Container>
   );
