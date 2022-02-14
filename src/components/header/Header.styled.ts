@@ -44,12 +44,10 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   flex-direction: column;
   left: 0;
   list-style: none;
-  margin: 0;
-  padding-top: 70px;
+  margin-top: 70px;
   position: absolute;
   right: 0;
   top: 0;
-  z-index: -1;
 
   li {
     margin: 20px auto 20px auto;
@@ -60,7 +58,6 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
     color: ${({ theme }) => theme.backgroundPrimary};
     font-family: ${({ theme }) => theme.fontPrimary};
     font-size: 24px;
-    font-weight: 400;
     padding: 13px 20px;
     text-decoration: none;
 
@@ -77,13 +74,12 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   @media screen and (${({ theme }) => theme.desktop}) {
     display: flex;
     flex-direction: row;
+    margin-top: 0px;
     padding: 0;
     position: static;
-    z-index: 0;
 
     a {
       font-size: 14px;
-      font-weight: 600;
     }
   }
 `;

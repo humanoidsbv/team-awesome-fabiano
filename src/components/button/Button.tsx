@@ -1,4 +1,5 @@
 import * as Styled from "./Button.styled";
+import PlusIcon from "../../../public/images/plus-icon.svg";
 
 interface ButtonProps {
   label: string;
@@ -7,5 +8,8 @@ interface ButtonProps {
 }
 
 export const Button = ({ onClick, label, style = "primary" }: ButtonProps) => (
-  <Styled.Button onClick={onClick}>{label}</Styled.Button>
+  <Styled.Button onClick={onClick}>
+    {PlusIcon && <PlusIcon fill="#fff" />}
+    {label}
+  </Styled.Button>
 );

@@ -37,9 +37,8 @@ export const HumanoidsLogo = styled.img`
   width: 80px;
 `;
 
-export const ArrowDownIcon = styled.img`
+export const ArrowDownIcon = styled.div`
+  display: flex;
   cursor: pointer;
-  height: 6px;
   margin-left: 16px;
-  width: 11px;
 `;
