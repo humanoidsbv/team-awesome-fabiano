@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   align-items: center;
-  background-color: #4f88ef;
+  background-color: ${({ theme }) => theme.backgroundSecondary};
   display: flex;
   height: 70px;
   justify-content: space-between;
   width: 100vw;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: flex;
     justify-content: start;
   }
@@ -22,24 +22,24 @@ export const ToggleButton = styled.button`
   margin-left: auto;
   padding: 10px 30px;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: none;
   }
 `;
 
 export const Logo = styled.a`
-  color: #ffffff;
+  color: ${({ theme }) => theme.backgroundPrimary};
   display: flex;
-  font-family: bello;
+  font-family: ${({ theme }) => theme.fontSecondary};
   font-size: 26px;
   padding: 10px 30px;
   text-decoration: none;
 `;
 
 export const MenuList = styled.ul<{ isActive: boolean }>`
-  background-color: #4f88ef;
+  background-color: ${({ theme }) => theme.backgroundSecondary};
   bottom: 0;
-  color: #ffffff;
+  color: ${({ theme }) => theme.backgroundPrimary};
   display: ${(props) => (props.isActive ? "flex" : "none")};
   flex-direction: column;
   left: 0;
@@ -57,15 +57,15 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   }
 
   a {
-    color: #ffffff;
-    font-family: proxima nova;
+    color: ${({ theme }) => theme.backgroundPrimary};
+    font-family: ${({ theme }) => theme.fontPrimary};
     font-size: 24px;
     font-weight: 400;
     padding: 13px 20px;
     text-decoration: none;
 
     :hover {
-      background-color: #1166a5;
+      background-color: ${({ theme }) => theme.backgroundSecondaryHover};
       border-radius: 2px;
     }
 
@@ -74,7 +74,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
     }
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (${({ theme }) => theme.desktop}) {
     display: flex;
     flex-direction: row;
     padding: 0;
@@ -90,7 +90,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
 
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #4f88ef;
+  background-color: ${({ theme }) => theme.backgroundSecondary};
   display: flex;
   height: 70px;
   justify-content: start;

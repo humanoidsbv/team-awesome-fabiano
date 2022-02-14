@@ -6,14 +6,14 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 0px 30px;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (${({ theme }) => theme.mobile}) {
     display: none;
   }
 `;
 
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.backgroundPrimary};
   border-radius: 20px;
   display: flex;
   height: 40px;

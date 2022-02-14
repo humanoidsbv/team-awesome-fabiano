@@ -1,13 +1,12 @@
 export const theme = {
   backgroundPrimary: "#ffffff",
   backgroundSecondary: "#4f88ef",
-  borderPrimary: "1px solid #e6eaee",
+  backgroundSecondaryHover: "#1166a5",
   colorPrimary: "#354052",
   fontPrimary: "Proxima Nova",
-  fontSecondary: "Bello Script",
+  fontSecondary: "Bello",
 
   // Breakpoints
-  tablet: "min-width: 720px",
+  mobile: "max-width: 1024px",
   desktop: "min-width: 1024px",
-  desktopL: "min-width: 1440px",
 };
