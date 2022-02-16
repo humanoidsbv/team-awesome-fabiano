@@ -16,7 +16,7 @@ export const Button = styled.button`
   width: 100%;
 
   @media screen and (${({ theme }) => theme.mobileSmall}) {
-    width: 190px;
+    max-width: 190px;
   }
 
   ${({ style }) =>

@@ -5,17 +5,22 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.primaryWhite};
   display: flex;
   flex-direction: column;
-  height: auto;
-  justify-content: space-between;
-  margin: 20px;
-  width: auto;
+  height: 118px;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0 20px;
+  position: fixed;
+  top: 70px;
+  z-index: 30;
+  width: 100%;
 
   @media screen and (${({ theme }) => theme.mobileSmall}) {
     display: flex;
     flex-direction: row;
-    height: 70px;
     justify-content: space-between;
-    margin: 0px 30px 15px 30px;
+    margin: 0;
+    height: 70px;
+    padding: 0 30px;
   }
 `;
 
@@ -23,7 +28,6 @@ export const Wrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
   width: 100%;
 
   @media screen and (${({ theme }) => theme.mobileSmall}) {
@@ -31,6 +35,7 @@ export const Wrapper = styled.div`
     gap: 20px;
     justify-content: flex-start;
     margin-bottom: 0px;
+    padding: 0;
   }
 `;
 
