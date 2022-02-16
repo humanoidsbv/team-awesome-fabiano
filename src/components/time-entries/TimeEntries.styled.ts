@@ -1,4 +1,4 @@
-import styled, { css, ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   border-radius: 4px;

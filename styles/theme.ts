@@ -17,7 +17,7 @@ export const theme = {
 
   //Fonts
   fontPrimary: "Proxima Nova",
-  fontSecondary: "Bello",
+  fontSecondary: "Bello Script",
 
   // Breakpoints
   mobileLarge: "max-width: 1024px",

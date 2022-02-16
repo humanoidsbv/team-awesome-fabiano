@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
     display: flex;
     gap: 20px;
     justify-content: flex-start;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     padding: 0;
   }
 `;
