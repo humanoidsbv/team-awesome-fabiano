@@ -2,21 +2,16 @@ import * as Styled from "./TimeEntries.styled";
 
 import { TimeEntry } from "../time-entry/TimeEntry";
 
-interface TimeEntriesProps {
-  id: number;
-  client: string;
-  startTimestamp: string;
-  stopTimestamp: string;
-}
+import timeEntries from "../../fixtures/time-entries.json";
 
 export const TimeEntries = () => {
-  return (
+  return timeEntries.map((timeEntry) => (
     <Styled.Container>
       <Styled.DateWorkTimeWrapper>
         <Styled.Date>Friday 29-07 (Today)</Styled.Date>
         <Styled.Time>08:00</Styled.Time>
       </Styled.DateWorkTimeWrapper>
-      <TimeEntry />
+      <TimeEntry client={timeEntry.client} />
     </Styled.Container>
-  );
+  ));
 };
