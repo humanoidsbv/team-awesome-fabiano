@@ -22,7 +22,7 @@ export const Button = styled.button`
   ${({ style }) =>
     style === "secondary" &&
     css`
-      background-color: green;
+      background-color: red;
       border: 10px solid yellow;
     `}
 `;
