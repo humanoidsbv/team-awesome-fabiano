@@ -6,7 +6,7 @@ interface ButtonProps {
   label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   style?: "primary" | "secondary";
-  PlusIcon: boolean;
+  icon?: boolean;
 }
 
 export const Button = ({ onClick, label, style = "primary" }: ButtonProps) => (

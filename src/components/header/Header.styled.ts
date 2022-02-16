@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.backgroundSecondary};
   display: flex;
   height: 70px;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
   width: 100vw;
+  z-index: 50;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     display: flex;
@@ -45,7 +48,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   left: 0;
   list-style: none;
   margin-top: 70px;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 

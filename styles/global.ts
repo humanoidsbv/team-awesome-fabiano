@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
 
+    body {
+      background-color: ${({ theme }) => theme.grey3};
+    }
+
     @font-face {
         font-family: "Proxima Nova";
         src: url("/fonts/proxima-nova/proxima-nova-regular.ttf");
