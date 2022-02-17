@@ -10,6 +10,10 @@ import importedTimeEntries from "../../fixtures/time-entries.json";
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = useState(importedTimeEntries);
 
+  timeEntries.sort(function (a, b) {
+    return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
+  });
+
   function handleClick() {
     setTimeEntries([
       ...timeEntries,
@@ -21,20 +25,27 @@ export const TimeEntries = () => {
       },
     ]);
   }
-  const currentDate = new Date();
-  const currentDay = currentDate.getDay();
-  const currentDayOfMonth = currentDate.getDate();
-  const currentMonth = currentDate.getMonth();
-  const dateString = currentDay + " " + currentDayOfMonth + "-" + currentMonth;
+
+  const formattedEntryDate = (date: string) => {
+    const formattedDate = new Date(date);
+
+    return formattedDate.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
 
   return (
     <Styled.Container>
-      <Styled.DateWorkTimeWrapper>
-        <Styled.Date>{dateString} (Today)</Styled.Date>
-        <Styled.Time>08:00</Styled.Time>
-      </Styled.DateWorkTimeWrapper>
       {timeEntries.map((timeEntry) => (
-        <TimeEntry {...timeEntry} key={timeEntry.id} />
+        <>
+          <Styled.DateWorkTimeWrapper>
+            <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)} (Today)</Styled.Date>
+            <Styled.Time>08:00</Styled.Time>
+          </Styled.DateWorkTimeWrapper>
+          <TimeEntry {...timeEntry} key={timeEntry.id} />
+        </>
       ))}
       <Button label="Add new entry" style="secondary" onClick={handleClick} />
     </Styled.Container>
