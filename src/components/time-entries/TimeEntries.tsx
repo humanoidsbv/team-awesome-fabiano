@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import * as Styled from "./TimeEntries.styled";
 
-import { TimeEntry } from "../time-entry/TimeEntry";
-import { Button } from "../button/Button";
+import { TimeEntry } from "../time-entry/";
+import { Button } from "../button/";
 
 import importedTimeEntries from "../../fixtures/time-entries.json";
 

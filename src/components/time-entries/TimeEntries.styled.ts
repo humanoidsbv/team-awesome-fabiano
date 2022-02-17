@@ -11,7 +11,7 @@ export const DateWorkTimeWrapper = styled.div`
   padding: 40px 0 20px 0;
 `;
 
-export const Date = styled.div`
+export const Date = styled.p`
   color: ${({ theme }) => theme.grey700};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;

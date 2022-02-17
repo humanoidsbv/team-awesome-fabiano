@@ -18,7 +18,7 @@ export const LocationHoursWrapper = styled.div`
   width: 100%;
 `;
 
-export const WorkLocation = styled.div`
+export const WorkLocation = styled.p`
   color: ${({ theme }) => theme.primaryGrey};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
@@ -32,13 +32,13 @@ export const TotalWorkHours = styled.div`
   padding: 20px 0;
 `;
 
-export const WorkHours = styled.div`
+export const WorkHours = styled.p`
   color: ${({ theme }) => theme.primaryGrey};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
 `;
 
-export const WorkTime = styled.div`
+export const WorkTime = styled.p`
   color: ${({ theme }) => theme.grey700};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 14px;

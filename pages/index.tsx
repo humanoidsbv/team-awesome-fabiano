@@ -1,9 +1,9 @@
 import { ThemeProvider } from "styled-components";
 
-import { Header } from "../src/components/header/Header";
-import { SecondaryHeader } from "../src/components/secondary-header/SecondaryHeader";
-import { TimeEntries } from "../src/components/time-entries/TimeEntries";
-import { PageContainer } from "../src/components/page-container/PageContainer";
+import { Header } from "../src/components/header/";
+import { SecondaryHeader } from "../src/components/secondary-header/";
+import { TimeEntries } from "../src/components/time-entries/";
+import { PageContainer } from "../src/components/page-container/";
 
 import GlobalStyle from "../styles/global";
 import { theme } from "../styles/theme";

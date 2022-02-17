@@ -1,6 +1,6 @@
 import * as Styled from "./SecondaryHeader.styled";
 
-import { Button } from "../button/Button";
+import { Button } from "../button/";
 
 const handleClick = () => alert("hello");
 

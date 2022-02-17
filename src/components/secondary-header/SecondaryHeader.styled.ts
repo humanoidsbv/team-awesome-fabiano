@@ -39,7 +39,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Timesheets = styled.article`
+export const Timesheets = styled.p`
   color: ${({ theme }) => theme.primaryGrey};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
@@ -56,7 +56,7 @@ export const VerticalLine = styled.div`
   }
 `;
 
-export const Entries = styled.article`
+export const Entries = styled.p`
   color: ${({ theme }) => theme.grey700};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 14px;

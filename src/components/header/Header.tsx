@@ -5,7 +5,7 @@ import HamburgerIcon from "../../../public/icons/hamburger.svg";
 
 import React, { useState } from "react";
 
-import { AccountButton } from "../accountbutton/AccountButton";
+import { AccountButton } from "../accountbutton/";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);

@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 export const Button = ({ onClick, label, style = "primary" }: ButtonProps) => (
-  <Styled.Button {...{ onClick }} {...{ style }}>
+  <Styled.Button {...{ onClick, style }}>
     {PlusIcon && <PlusIcon fill="#fff" />}
     {label}
   </Styled.Button>
