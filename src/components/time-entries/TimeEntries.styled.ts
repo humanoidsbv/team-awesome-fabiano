@@ -21,14 +21,3 @@ export const Date = styled.div`
     font-size: 24px;
   }
 `;
-
-export const Time = styled.div`
-  color: ${({ theme }) => theme.grey700};
-  font-family: ${({ theme }) => theme.fontPrimary};
-  font-size: 18px;
-  width: auto;
-
-  @media screen and (${({ theme }) => theme.mobileSmall}) {
-    font-size: 24px;
-  }
-`;
