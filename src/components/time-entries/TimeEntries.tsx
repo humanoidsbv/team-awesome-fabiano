@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import * as Styled from "./TimeEntries.styled";
 
 import { TimeEntry } from "../time-entry/";
 import { Button } from "../button/";
 
-import importedTimeEntries from "../../fixtures/time-entries.json";
-
 export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = useState(importedTimeEntries);
+  const [timeEntries, setTimeEntries] = React.useState([]);
+
+  async function getTimeEntries(): Promise<Types.TimeEntry[]> {
+    const response = await fetch("http://localhost:3004/time-entries", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.json();
+  }
+
+  async function fetchTimeEntries() {
+    setTimeEntries(await getTimeEntries());
+  }
+
+  useEffect(() => {
+    fetchTimeEntries();
+  }, []);
 
   function handleClick() {
     setTimeEntries([
