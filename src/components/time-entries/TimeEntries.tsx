@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import * as Styled from "./TimeEntries.styled";
 
@@ -19,9 +19,9 @@ export const TimeEntries = () => {
     return response.json();
   }
 
-  async function fetchTimeEntries() {
+  const fetchTimeEntries = async () => {
     setTimeEntries(await getTimeEntries());
-  }
+  };
 
   useEffect(() => {
     fetchTimeEntries();
