@@ -4,7 +4,7 @@
   "description": "team awesome fabiano project",
   "main": "javascript.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next & json-server --watch db.json --port 3004",
     "build": "next build",
     "start": "next start"
   },
@@ -24,13 +24,14 @@
   },
   "homepage": "https://github.com/humanoidsbv/team-awesome-fabiano#readme",
   "dependencies": {
+    "json-server": "^0.17.0",
     "next": "^12.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@humanoids/eslint-config": "^0.0.12",
+    "@humanoids/eslint-config": "^0.0.13",
     "@humanoids/prettier-config": "^0.0.4",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.17",
