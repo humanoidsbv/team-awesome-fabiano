@@ -1,27 +1,41 @@
 import React, { useEffect, useState } from "react";
 
 import * as Styled from "./TimeEntries.styled";
+import * as Types from "./TimeEntries.types";
 
 import { TimeEntry } from "../time-entry/";
 import { Button } from "../button/";
+import { NotFoundError } from "../errors/NotFoundError";
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = React.useState([]);
 
   async function getTimeEntries(): Promise<Types.TimeEntry[]> {
-    const response = await fetch("http://localhost:3004/time-entries", {
+    return fetch("http://localhost:3004/time-entries", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-    });
-
-    return response.json();
+    })
+      .then((response) => {
+        if (response.status === 404) {
+          throw new NotFoundError(response);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .catch((error) => error);
   }
 
-  const fetchTimeEntries = async () => {
-    setTimeEntries(await getTimeEntries());
-  };
+  async function fetchTimeEntries() {
+    const timeEntriesFetched = await getTimeEntries();
+
+    if (timeEntriesFetched instanceof NotFoundError) {
+      return;
+    }
+
+    setTimeEntries(timeEntriesFetched);
+  }
 
   useEffect(() => {
     fetchTimeEntries();
@@ -31,8 +45,8 @@ export const TimeEntries = () => {
     setTimeEntries([
       ...timeEntries,
       {
-        id: Math.random() * 1000,
         client: "Humanoids",
+        id: Math.random() * 1000,
         startTimestamp: "2021-09-26T16:00:00.000Z",
         stopTimestamp: "2021-09-26T18:00:00.000Z",
       },
