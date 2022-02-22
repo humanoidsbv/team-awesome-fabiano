@@ -11,6 +11,7 @@ export const Container = styled.div`
   padding: 0 20px;
   position: fixed;
   top: 70px;
+  left: 0;
   z-index: 30;
   width: 100%;
 
@@ -39,7 +40,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Timesheets = styled.p`
+export const Title = styled.p`
   color: ${({ theme }) => theme.primaryGrey};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
@@ -56,7 +57,7 @@ export const VerticalLine = styled.div`
   }
 `;
 
-export const Entries = styled.p`
+export const Subtitle = styled.p`
   color: ${({ theme }) => theme.grey700};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 14px;

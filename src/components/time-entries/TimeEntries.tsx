@@ -6,9 +6,12 @@ import * as Types from "./TimeEntries.types";
 import { TimeEntry } from "../time-entry/";
 import { Button } from "../button/";
 import { NotFoundError } from "../errors/NotFoundError";
+import { Modal } from "../modal";
+import { SecondaryHeader } from "../secondary-header";
 
 export const TimeEntries = () => {
   const [timeEntries, setTimeEntries] = React.useState([]);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   async function getTimeEntries(): Promise<Types.TimeEntry[]> {
     return fetch("http://localhost:3004/time-entries", {
@@ -68,23 +71,34 @@ export const TimeEntries = () => {
   };
 
   return (
-    <Styled.Container>
-      {timeEntries.map((timeEntry, i, array) => {
-        const currentDate = formattedEntryDate(timeEntry.startTimestamp);
-        const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
+    <Styled.Wrapper>
+      <SecondaryHeader
+        title="Timesheets"
+        subtitle="12 Entries"
+        buttonLabel="New time entry"
+        buttonKind="primary"
+        buttonOnClick={() => setIsModalActive(true)}
+        buttonIcon={true}
+      />
+      <Styled.Container>
+        {timeEntries.map((timeEntry, i, array) => {
+          const currentDate = formattedEntryDate(timeEntry.startTimestamp);
+          const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
 
-        return (
-          <React.Fragment key={timeEntry.id}>
-            {currentDate !== previousDate && (
-              <Styled.DateWorkTimeWrapper>
-                <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
-              </Styled.DateWorkTimeWrapper>
-            )}
-            <TimeEntry {...timeEntry} />
-          </React.Fragment>
-        );
-      })}
-      <Button label="Add new entry" kind="secondary" onClick={handleClick} icon={true} />
-    </Styled.Container>
+          return (
+            <React.Fragment key={timeEntry.id}>
+              {currentDate !== previousDate && (
+                <Styled.DateWorkTimeWrapper>
+                  <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
+                </Styled.DateWorkTimeWrapper>
+              )}
+              <TimeEntry {...timeEntry} />
+            </React.Fragment>
+          );
+        })}
+        <Button label="Add new entry" kind="secondary" onClick={handleClick} icon={true} />
+        <Modal isActive={isModalActive} onClose={() => setIsModalActive(false)} />
+      </Styled.Container>
+    </Styled.Wrapper>
   );
 };
