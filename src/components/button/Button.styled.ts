@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.button<{ kind: string }>`
   align-items: center;
   background-color: ${({ theme }) => theme.primaryGreen};
   border-radius: 4px;
@@ -14,14 +14,17 @@ export const Button = styled.button`
   height: 40px;
   justify-content: center;
   width: 100%;
+  /* margin-left: 15px;
+  margin-right: 15px; */
 
   @media screen and (${({ theme }) => theme.mobileSmall}) {
     max-width: 190px;
   }
 
-  ${({ style }) =>
-    style === "secondary" &&
+  ${({ kind }) =>
+    kind === "secondary" &&
     css`
-      background-color: purple;
+      background-color: ${({ theme }) => theme.grey2};
+      color: ${({ theme }) => theme.primaryGrey};
     `}
 `;

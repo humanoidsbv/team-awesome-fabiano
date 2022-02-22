@@ -1,10 +1,13 @@
 import * as Styled from "./SecondaryHeader.styled";
 
-import { Button } from "../button/";
+import React, { useState } from "react";
 
-const handleClick = () => alert("hello");
+import { Button } from "../button/";
+import { Modal } from "../modal";
 
 export const SecondaryHeader = () => {
+  const [isModalActive, setIsModalActive] = useState(false);
+
   return (
     <Styled.Container>
       <Styled.Wrapper>
@@ -12,7 +15,13 @@ export const SecondaryHeader = () => {
         <Styled.VerticalLine>|</Styled.VerticalLine>
         <Styled.Entries>12 Entries</Styled.Entries>
       </Styled.Wrapper>
-      <Button icon label="New time entry" style="primary" onClick={handleClick} />
+      <Button
+        label="New time entry"
+        kind="primary"
+        onClick={() => setIsModalActive(true)}
+        icon={true}
+      />
+      <Modal isActive={isModalActive} onClose={() => setIsModalActive(false)}></Modal>
     </Styled.Container>
   );
 };

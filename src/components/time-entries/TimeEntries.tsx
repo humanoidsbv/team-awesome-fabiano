@@ -84,7 +84,7 @@ export const TimeEntries = () => {
           </React.Fragment>
         );
       })}
-      <Button label="Add new entry" style="secondary" onClick={handleClick} />
+      <Button label="Add new entry" kind="secondary" onClick={handleClick} icon={true} />
     </Styled.Container>
   );
 };
