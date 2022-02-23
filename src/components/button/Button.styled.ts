@@ -14,8 +14,6 @@ export const Button = styled.button<{ kind: string }>`
   height: 40px;
   justify-content: center;
   width: 100%;
-  /* margin-left: 15px;
-  margin-right: 15px; */
 
   @media screen and (${({ theme }) => theme.mobileSmall}) {
     max-width: 190px;

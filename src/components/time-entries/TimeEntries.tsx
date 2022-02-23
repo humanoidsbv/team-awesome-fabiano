@@ -10,7 +10,7 @@ import { Modal } from "../modal";
 import { SecondaryHeader } from "../secondary-header";
 
 export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = React.useState([]);
+  const [timeEntries, setTimeEntries] = useState([]);
   const [isModalActive, setIsModalActive] = useState(false);
 
   async function getTimeEntries(): Promise<Types.TimeEntry[]> {
@@ -44,16 +44,8 @@ export const TimeEntries = () => {
     fetchTimeEntries();
   }, []);
 
-  function handleClick() {
-    setTimeEntries([
-      ...timeEntries,
-      {
-        client: "Humanoids",
-        id: Math.random() * 1000,
-        startTimestamp: "2021-09-26T16:00:00.000Z",
-        stopTimestamp: "2021-09-26T18:00:00.000Z",
-      },
-    ]);
+  function handleClick(newTimeEntry) {
+    setTimeEntries([...timeEntries, newTimeEntry]);
   }
 
   timeEntries.sort(function (a, b) {
@@ -69,9 +61,9 @@ export const TimeEntries = () => {
       year: "numeric",
     });
   };
-
+  console.log(timeEntries);
   return (
-    <Styled.Wrapper>
+    <div>
       <SecondaryHeader
         title="Timesheets"
         subtitle="12 Entries"
@@ -96,9 +88,12 @@ export const TimeEntries = () => {
             </React.Fragment>
           );
         })}
-        <Button label="Add new entry" kind="secondary" onClick={handleClick} icon={true} />
-        <Modal isActive={isModalActive} onClose={() => setIsModalActive(false)} />
+        <Modal
+          isActive={isModalActive}
+          onClose={() => setIsModalActive(false)}
+          addButtonOnClick={handleClick}
+        />
       </Styled.Container>
-    </Styled.Wrapper>
+    </div>
   );
 };

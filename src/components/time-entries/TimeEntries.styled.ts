@@ -5,8 +5,6 @@ export const Container = styled.div`
   padding: 0px 10px;
 `;
 
-export const Wrapper = styled.div``;
-
 export const DateWorkTimeWrapper = styled.div`
   display: flex;
   justify-content: space-between;

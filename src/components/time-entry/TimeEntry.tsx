@@ -1,6 +1,7 @@
 import * as Styled from "./TimeEntry.styled";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
+import React from "react";
 
 interface TimeEntryProps {
   client: string;
@@ -11,6 +12,7 @@ interface TimeEntryProps {
 
 export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: TimeEntryProps) => {
   const startTime = new Date(startTimestamp);
+  // console.log(startTimestamp);
   const endTime = new Date(stopTimestamp);
 
   const timeFormatter = (time: Date) =>
