@@ -7,11 +7,12 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   kind?: "primary" | "secondary";
   icon?: boolean;
+  disabled?: boolean;
 }
 
-export const Button = ({ onClick, label, kind = "primary", icon }: ButtonProps) => {
+export const Button = ({ onClick, label, kind = "primary", icon, disabled }: ButtonProps) => {
   return (
-    <Styled.Button {...{ onClick, kind, icon }}>
+    <Styled.Button {...{ onClick, kind, icon, disabled }}>
       {icon && <PlusIcon fill="#fff" />}
       {label}
     </Styled.Button>

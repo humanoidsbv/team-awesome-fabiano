@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { createPortal } from "react-dom";
 import { Button } from "../button/Button";
@@ -22,6 +22,9 @@ interface ITimeEntry {
 }
 
 export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalProps) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const [newTimeEntry, setNewTimeEntry] = useState<ITimeEntry>({
     client: "",
     activity: "",
@@ -31,8 +34,11 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
   });
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setIsFormValid(formRef.current?.checkValidity());
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
+
+  console.log(formRef.current?.checkValidity());
 
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -48,6 +54,7 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
       ...newTimeEntry,
       startTimestamp,
       stopTimestamp,
+      id: "fjdj",
     });
 
     setNewTimeEntry({});
@@ -70,64 +77,75 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
               <CloseArrowIcon />
             </Styled.CloseButton>
           </Styled.Entry>
-          <Styled.InputFields>
-            <Styled.ClientActivity>
-              Client
-              <Styled.InputBig
-                type="text"
-                name="client"
-                value={newTimeEntry.client ?? ""}
-                onChange={handleChange}
-              />
-            </Styled.ClientActivity>
-            <Styled.ClientActivity>
-              Activity
-              <Styled.InputBig
-                type="text"
-                name="activity"
-                value={newTimeEntry.activity ?? ""}
-                onChange={handleChange}
-              />
-            </Styled.ClientActivity>
-          </Styled.InputFields>
-          <Styled.DateFromTo>
-            <Styled.Date>
-              Date
-              <Styled.InputDate
-                type="date"
-                name="date"
-                value={newTimeEntry.date ?? ""}
-                onChange={handleChange}
-              />
-            </Styled.Date>
-            <Styled.FromToTotal>
-              <Styled.FromTo>
-                From
-                <Styled.InputSmall
-                  type="time"
-                  name="startTimestamp"
-                  value={newTimeEntry.startTimestamp ?? ""}
+          <form ref={formRef}>
+            <Styled.InputFields>
+              <Styled.ClientActivity>
+                Client
+                <Styled.InputBig
+                  type="text"
+                  name="client"
+                  value={newTimeEntry.client ?? ""}
                   onChange={handleChange}
+                  required
                 />
-              </Styled.FromTo>
-              <Styled.FromTo>
-                To
-                <Styled.InputSmall
-                  type="time"
-                  name="stopTimestamp"
-                  value={newTimeEntry.stopTimestamp ?? ""}
+              </Styled.ClientActivity>
+              <Styled.ClientActivity>
+                Activity
+                <Styled.InputBig
+                  type="text"
+                  name="activity"
+                  value={newTimeEntry.activity ?? ""}
                   onChange={handleChange}
+                  required
                 />
-              </Styled.FromTo>
-              <Styled.FromTo>
-                Total
-                <Styled.SumWorkTime>08:00</Styled.SumWorkTime>
-              </Styled.FromTo>
-            </Styled.FromToTotal>
-          </Styled.DateFromTo>
+              </Styled.ClientActivity>
+            </Styled.InputFields>
+            <Styled.DateFromTo>
+              <Styled.Date>
+                Date
+                <Styled.InputDate
+                  type="date"
+                  name="date"
+                  value={newTimeEntry.date ?? ""}
+                  onChange={handleChange}
+                  required
+                />
+              </Styled.Date>
+              <Styled.FromToTotal>
+                <Styled.FromTo>
+                  From
+                  <Styled.InputSmall
+                    type="time"
+                    name="startTimestamp"
+                    value={newTimeEntry.startTimestamp ?? ""}
+                    onChange={handleChange}
+                    required
+                  />
+                </Styled.FromTo>
+                <Styled.FromTo>
+                  To
+                  <Styled.InputSmall
+                    type="time"
+                    name="stopTimestamp"
+                    value={newTimeEntry.stopTimestamp ?? ""}
+                    onChange={handleChange}
+                    required
+                  />
+                </Styled.FromTo>
+                <Styled.FromTo>
+                  Total
+                  <Styled.SumWorkTime>08:00</Styled.SumWorkTime>
+                </Styled.FromTo>
+              </Styled.FromToTotal>
+            </Styled.DateFromTo>
+          </form>
           <Styled.Buttons>
-            <Button label="Cancel" kind="secondary" />
-            <Button label="Add time entry" onClick={(event) => handleSubmit(event)} />
+            <Button label="Cancel" kind="secondary" onClick={onClose} />
+            <Button
+              label="Add time entry"
+              onClick={(event) => handleSubmit(event)}
+              disabled={!isFormValid}
+            />
           </Styled.Buttons>
         </Styled.Modal>
       </Styled.Container>,

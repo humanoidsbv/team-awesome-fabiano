@@ -92,6 +92,10 @@ export const InputBig = styled.input`
   height: 40px;
   margin-top: 10px;
   padding: 13px 15px;
+
+  :invalid {
+    border: 1px solid ${({ theme }) => theme.primaryRed};
+  }
 `;
 
 export const InputDate = styled.input`
@@ -105,6 +109,10 @@ export const InputDate = styled.input`
 
   @media screen and (${({ theme }) => theme.desktop}) {
     width: 200px;
+  }
+
+  :invalid {
+    border: 1px solid ${({ theme }) => theme.primaryRed};
   }
 `;
 
@@ -129,6 +137,10 @@ export const InputSmall = styled.input`
 
   @media screen and (${({ theme }) => theme.desktop}) {
     width: 80px;
+  }
+
+  :invalid {
+    border: 1px solid ${({ theme }) => theme.primaryRed};
   }
 `;
 
