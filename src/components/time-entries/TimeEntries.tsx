@@ -44,7 +44,19 @@ export const TimeEntries = () => {
     fetchTimeEntries();
   }, []);
 
+  async function addTimeEntry(newTimeEntry: TimeEntry) {
+    const response = await fetch("http://localhost:3004/time-entries", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTimeEntry),
+    });
+    return response.json();
+  }
+
   function handleClick(newTimeEntry) {
+    addTimeEntry(newTimeEntry);
     setTimeEntries([...timeEntries, newTimeEntry]);
   }
 
