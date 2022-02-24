@@ -2,15 +2,25 @@ import * as Styled from "./TimeEntry.styled";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
 import React from "react";
+import { getTimeEntries, removeTimeEntry } from "../../services/time-entries-api";
+import { TimeEntries } from "../time-entries";
+import { getEntrypointInfo } from "next/dist/build/webpack/plugins/middleware-plugin";
 
 interface TimeEntryProps {
   client: string;
   id: number;
   startTimestamp: string;
   stopTimestamp: string;
+  setTimeEntries: () => void;
 }
 
-export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: TimeEntryProps) => {
+export const TimeEntry = ({
+  id,
+  client,
+  startTimestamp,
+  stopTimestamp,
+  setTimeEntries,
+}: TimeEntryProps) => {
   const startTime = new Date(startTimestamp);
   const endTime = new Date(stopTimestamp);
 
@@ -19,6 +29,11 @@ export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: TimeEnt
       hour: "2-digit",
       minute: "2-digit",
     });
+
+  function handleDeleteButtonClick() {
+    removeTimeEntry(id);
+    setTimeEntries((timeEntries) => timeEntries.filter((entry) => entry.id !== id));
+  }
 
   const formattedStartTime = timeFormatter(startTime);
   const formattedEndTime = timeFormatter(endTime);
@@ -35,7 +50,7 @@ export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: TimeEnt
         </Styled.TotalWorkHours>
       </Styled.LocationHoursWrapper>
       <Styled.TrashButton>
-        <TrashBinIcon />
+        <TrashBinIcon onClick={handleDeleteButtonClick} />
       </Styled.TrashButton>
     </Styled.TimeEntry>
   );

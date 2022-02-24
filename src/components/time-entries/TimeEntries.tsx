@@ -52,7 +52,7 @@ export const TimeEntries = (props) => {
                   <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
                 </Styled.DateWorkTimeWrapper>
               )}
-              <TimeEntry {...timeEntry} />
+              <TimeEntry {...timeEntry} setTimeEntries={setTimeEntries} />
             </React.Fragment>
           );
         })}

@@ -1,3 +1,4 @@
+import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
 import { NotFoundError } from "../components/errors/NotFoundError";
 import * as Types from "../components/time-entries/TimeEntries.types";
 
@@ -18,7 +19,7 @@ export async function getTimeEntries(): Promise<Types.TimeEntry[]> {
     .catch((error) => error);
 }
 
-export async function addTimeEntry(newTimeEntry: TimeEntry) {
+export async function addTimeEntry(newTimeEntry: Types.TimeEntry) {
   const response = await fetch("http://localhost:3004/time-entries", {
     method: "POST",
     headers: {
@@ -29,11 +30,12 @@ export async function addTimeEntry(newTimeEntry: TimeEntry) {
   return response.json();
 }
 
-// export async function removeTimeEntry() {
-//   return fetch("http://localhost:3004/time-entries", {
-//     method: "DELETE",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   }
-// }
+export async function removeTimeEntry(id) {
+  const response = await fetch("http://localhost:3004/time-entries/" + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.json();
+}
