@@ -59,7 +59,7 @@ export const TimeEntries = (props) => {
         <Modal
           isActive={isModalActive}
           onClose={() => setIsModalActive(false)}
-          addButtonOnClick={handleClick}
+          handleAddButtonClick={handleClick}
         />
       </Styled.Container>
     </div>

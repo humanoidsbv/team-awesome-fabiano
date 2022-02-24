@@ -37,7 +37,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const Entry = styled.p`
+export const Title = styled.p`
   color: ${({ theme }) => theme.grey700};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};

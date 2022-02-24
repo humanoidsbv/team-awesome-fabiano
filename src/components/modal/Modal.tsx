@@ -10,7 +10,7 @@ interface ModalProps {
   children?: string;
   isActive: boolean;
   onClose: () => void;
-  addButtonOnClick: (newTimeEntry) => void;
+  handleAddButtonClick: (newTimeEntry) => void;
 }
 
 interface ITimeEntry {
@@ -21,7 +21,7 @@ interface ITimeEntry {
   stopTimestamp: string;
 }
 
-export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalProps) => {
+export const Modal = ({ children, isActive, onClose, handleAddButtonClick }: ModalProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -50,7 +50,7 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
       newTimeEntry.date + " " + newTimeEntry.stopTimestamp,
     ).toISOString();
 
-    addButtonOnClick({
+    handleAddButtonClick({
       ...newTimeEntry,
       startTimestamp,
       stopTimestamp,
@@ -70,12 +70,12 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
             event.stopPropagation();
           }}
         >
-          <Styled.Entry>
+          <Styled.Title>
             New time entry
             <Styled.CloseButton onClick={onClose}>
               <CloseArrowIcon />
             </Styled.CloseButton>
-          </Styled.Entry>
+          </Styled.Title>
           <form ref={formRef}>
             <Styled.InputFields>
               <Styled.ClientActivity>

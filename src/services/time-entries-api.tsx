@@ -28,3 +28,12 @@ export async function addTimeEntry(newTimeEntry: TimeEntry) {
   });
   return response.json();
 }
+
+// export async function removeTimeEntry() {
+//   return fetch("http://localhost:3004/time-entries", {
+//     method: "DELETE",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   }
+// }
