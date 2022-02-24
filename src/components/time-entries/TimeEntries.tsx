@@ -1,59 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import * as Styled from "./TimeEntries.styled";
-import * as Types from "./TimeEntries.types";
 
 import { TimeEntry } from "../time-entry/";
-import { Button } from "../button/";
-import { NotFoundError } from "../errors/NotFoundError";
 import { Modal } from "../modal";
 import { SecondaryHeader } from "../secondary-header";
+import { addTimeEntry } from "../../services/time-entries-api";
 
-export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = useState([]);
+export const TimeEntries = (props) => {
+  const [timeEntries, setTimeEntries] = useState(props.timeEntries);
   const [isModalActive, setIsModalActive] = useState(false);
-
-  async function getTimeEntries(): Promise<Types.TimeEntry[]> {
-    return fetch("http://localhost:3004/time-entries", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.status === 404) {
-          throw new NotFoundError(response);
-        }
-        return response;
-      })
-      .then((response) => response.json())
-      .catch((error) => error);
-  }
-
-  async function fetchTimeEntries() {
-    const timeEntriesFetched = await getTimeEntries();
-
-    if (timeEntriesFetched instanceof NotFoundError) {
-      return;
-    }
-
-    setTimeEntries(timeEntriesFetched);
-  }
-
-  useEffect(() => {
-    fetchTimeEntries();
-  }, []);
-
-  async function addTimeEntry(newTimeEntry: TimeEntry) {
-    const response = await fetch("http://localhost:3004/time-entries", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTimeEntry),
-    });
-    return response.json();
-  }
 
   function handleClick(newTimeEntry) {
     addTimeEntry(newTimeEntry);
@@ -73,7 +29,7 @@ export const TimeEntries = () => {
       year: "numeric",
     });
   };
-  console.log(timeEntries);
+
   return (
     <div>
       <SecondaryHeader

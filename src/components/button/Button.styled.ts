@@ -1,55 +1,60 @@
-import styled, { css } from "styled-components";
+import styled, { css, ThemeProps } from "styled-components";
+import { theme } from "../../../styles/theme";
 
-export const Button = styled.button<{ kind: string }>`
-  align-items: center;
-  background-color: ${({ theme }) => theme.primaryGreen};
-  border-radius: 4px;
-  border: none;
-  color: ${({ theme }) => theme.primaryWhite};
-  column-gap: 15px;
-  cursor: pointer;
-  display: flex;
-  font-family: ${({ theme }) => theme.fontPrimary};
-  font-size: 14px;
-  height: 40px;
-  justify-content: center;
-  width: 100%;
+interface ButtonProps extends ThemeProps<typeof theme> {
+  kind: "primary" | "secondary";
+}
 
-  @media screen and (${({ theme }) => theme.mobileSmall}) {
-    max-width: 190px;
-  }
+export const Button = styled.button(
+  ({ theme, kind, disabled }: ButtonProps & HTMLButtonElement) => css`
+    align-items: center;
+    background-color: ${theme.primaryGreen};
+    border-radius: 4px;
+    border: none;
+    color: ${theme.primaryWhite};
+    column-gap: 15px;
+    cursor: pointer;
+    display: flex;
+    font-family: ${theme.fontPrimary};
+    font-size: 14px;
+    height: 40px;
+    justify-content: center;
+    width: 100%;
 
-  :hover {
-    background-color: ${({ theme }) => theme.green2};
-  }
+    @media screen and (${theme.mobileSmall}) {
+      max-width: 190px;
+    }
 
-  :focus {
-    background-color: ${({ theme }) => theme.green3};
-  }
+    :hover {
+      background-color: ${theme.green2};
+    }
 
-  ${({ kind }) =>
-    kind === "secondary" &&
+    :focus {
+      background-color: ${theme.green3};
+    }
+
+    ${kind === "secondary" &&
     css`
-      background-color: ${({ theme }) => theme.grey2};
-      color: ${({ theme }) => theme.primaryGrey};
+      background-color: ${theme.grey2};
+      color: ${theme.primaryGrey};
 
       :hover {
-        background-color: ${({ theme }) => theme.grey3};
+        background-color: ${theme.grey3};
       }
 
       :focus {
-        background-color: ${({ theme }) => theme.grey4};
+        background-color: ${theme.grey4};
       }
     `}
 
-  ${({ disabled }) =>
-    disabled &&
+    ${disabled &&
     css`
-      background-color: ${({ theme }) => theme.grey3};
+      background-color: ${theme.grey3};
       cursor: not-allowed;
 
       :hover {
-        background-color: ${({ theme }) => theme.grey3};
+        background-color: ${theme.grey3};
       }
     `}
-`;
+  `,
+);
