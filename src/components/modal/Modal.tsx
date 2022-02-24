@@ -54,7 +54,6 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
       ...newTimeEntry,
       startTimestamp,
       stopTimestamp,
-      id: "fjdj",
     });
 
     setNewTimeEntry({});

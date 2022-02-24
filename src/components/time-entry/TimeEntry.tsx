@@ -12,7 +12,6 @@ interface TimeEntryProps {
 
 export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: TimeEntryProps) => {
   const startTime = new Date(startTimestamp);
-  // console.log(startTimestamp);
   const endTime = new Date(stopTimestamp);
 
   const timeFormatter = (time: Date) =>
