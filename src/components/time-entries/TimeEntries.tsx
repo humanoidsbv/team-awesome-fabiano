@@ -1,42 +1,63 @@
 import React, { useEffect, useState } from "react";
 
 import * as Styled from "./TimeEntries.styled";
+import * as Types from "./TimeEntries.types";
 
 import { TimeEntry } from "../time-entry/";
 import { Button } from "../button/";
+import { NotFoundError } from "../errors/NotFoundError";
+import { Modal } from "../modal";
+import { SecondaryHeader } from "../secondary-header";
 
 export const TimeEntries = () => {
-  const [timeEntries, setTimeEntries] = React.useState([]);
+  const [timeEntries, setTimeEntries] = useState([]);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   async function getTimeEntries(): Promise<Types.TimeEntry[]> {
-    const response = await fetch("http://localhost:3004/time-entries", {
+    return fetch("http://localhost:3004/time-entries", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-    });
-
-    return response.json();
+    })
+      .then((response) => {
+        if (response.status === 404) {
+          throw new NotFoundError(response);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .catch((error) => error);
   }
 
-  const fetchTimeEntries = async () => {
-    setTimeEntries(await getTimeEntries());
-  };
+  async function fetchTimeEntries() {
+    const timeEntriesFetched = await getTimeEntries();
+
+    if (timeEntriesFetched instanceof NotFoundError) {
+      return;
+    }
+
+    setTimeEntries(timeEntriesFetched);
+  }
 
   useEffect(() => {
     fetchTimeEntries();
   }, []);
 
-  function handleClick() {
-    setTimeEntries([
-      ...timeEntries,
-      {
-        id: Math.random() * 1000,
-        client: "Humanoids",
-        startTimestamp: "2021-09-26T16:00:00.000Z",
-        stopTimestamp: "2021-09-26T18:00:00.000Z",
+  async function addTimeEntry(newTimeEntry: TimeEntry) {
+    const response = await fetch("http://localhost:3004/time-entries", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    ]);
+      body: JSON.stringify(newTimeEntry),
+    });
+    return response.json();
+  }
+
+  function handleClick(newTimeEntry) {
+    addTimeEntry(newTimeEntry);
+    setTimeEntries([...timeEntries, newTimeEntry]);
   }
 
   timeEntries.sort(function (a, b) {
@@ -52,25 +73,39 @@ export const TimeEntries = () => {
       year: "numeric",
     });
   };
-
+  console.log(timeEntries);
   return (
-    <Styled.Container>
-      {timeEntries.map((timeEntry, i, array) => {
-        const currentDate = formattedEntryDate(timeEntry.startTimestamp);
-        const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
+    <div>
+      <SecondaryHeader
+        title="Timesheets"
+        subtitle="12 Entries"
+        buttonLabel="New time entry"
+        buttonKind="primary"
+        buttonOnClick={() => setIsModalActive(true)}
+        buttonIcon={true}
+      />
+      <Styled.Container>
+        {timeEntries.map((timeEntry, i, array) => {
+          const currentDate = formattedEntryDate(timeEntry.startTimestamp);
+          const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
 
-        return (
-          <React.Fragment key={timeEntry.id}>
-            {currentDate !== previousDate && (
-              <Styled.DateWorkTimeWrapper>
-                <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
-              </Styled.DateWorkTimeWrapper>
-            )}
-            <TimeEntry {...timeEntry} />
-          </React.Fragment>
-        );
-      })}
-      <Button label="Add new entry" style="secondary" onClick={handleClick} />
-    </Styled.Container>
+          return (
+            <React.Fragment key={timeEntry.id}>
+              {currentDate !== previousDate && (
+                <Styled.DateWorkTimeWrapper>
+                  <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
+                </Styled.DateWorkTimeWrapper>
+              )}
+              <TimeEntry {...timeEntry} />
+            </React.Fragment>
+          );
+        })}
+        <Modal
+          isActive={isModalActive}
+          onClose={() => setIsModalActive(false)}
+          addButtonOnClick={handleClick}
+        />
+      </Styled.Container>
+    </div>
   );
 };

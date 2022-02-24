@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.button<{ kind: string }>`
   align-items: center;
   background-color: ${({ theme }) => theme.primaryGreen};
   border-radius: 4px;
@@ -19,9 +19,37 @@ export const Button = styled.button`
     max-width: 190px;
   }
 
-  ${({ style }) =>
-    style === "secondary" &&
+  :hover {
+    background-color: ${({ theme }) => theme.green2};
+  }
+
+  :focus {
+    background-color: ${({ theme }) => theme.green3};
+  }
+
+  ${({ kind }) =>
+    kind === "secondary" &&
     css`
-      background-color: purple;
+      background-color: ${({ theme }) => theme.grey2};
+      color: ${({ theme }) => theme.primaryGrey};
+
+      :hover {
+        background-color: ${({ theme }) => theme.grey3};
+      }
+
+      :focus {
+        background-color: ${({ theme }) => theme.grey4};
+      }
+    `}
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: ${({ theme }) => theme.grey3};
+      cursor: not-allowed;
+
+      :hover {
+        background-color: ${({ theme }) => theme.grey3};
+      }
     `}
 `;

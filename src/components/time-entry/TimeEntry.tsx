@@ -1,6 +1,7 @@
 import * as Styled from "./TimeEntry.styled";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
+import React from "react";
 
 interface TimeEntryProps {
   client: string;

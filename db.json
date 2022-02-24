@@ -1,24 +1,24 @@
 {
   "time-entries": [
     {
-      "client": "Heineken",
-      "stopTimestamp": "2020-03-10T16:30:00.000Z",
+      "client": "Kunsthal",
+      "stopTimestamp": "2022-01-10T16:30:00.000Z",
       "id": 1,
-      "startTimestamp": "2020-03-10T09:30:00.000Z",
-      "activity": "Testing"
-    },
-    {
-      "client": "Port of Rotterdam",
-      "stopTimestamp": "2020-03-10T09:30:00.000Z",
-      "id": 2,
-      "startTimestamp": "2020-03-10T07:30:00.000Z",
+      "startTimestamp": "2022-01-10T09:30:00.000Z",
       "activity": "Design"
     },
     {
-      "client": "Hike One",
-      "stopTimestamp": "2020-03-12T17:30:00.000Z",
+      "client": "Gemeente Rotterdam",
+      "stopTimestamp": "2022-01-10T09:30:00.000Z",
+      "id": 2,
+      "startTimestamp": "2022-01-10T07:30:00.000Z",
+      "activity": "Testing"
+    },
+    {
+      "client": "NS",
+      "stopTimestamp": "2022-01-12T17:30:00.000Z",
       "id": 3,
-      "startTimestamp": "2020-03-12T09:30:00.000Z",
+      "startTimestamp": "2022-01-12T09:30:00.000Z",
       "activity": "Development"
     }
   ]

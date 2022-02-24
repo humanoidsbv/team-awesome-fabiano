@@ -1,18 +1,34 @@
 import * as Styled from "./SecondaryHeader.styled";
 
+import React, { useState } from "react";
+
 import { Button } from "../button/";
 
-const handleClick = () => alert("hello");
+interface SecondaryHeaderProps {
+  title: string;
+  subtitle: string;
+  buttonLabel: string;
+  buttonKind: "primary" | "secondary";
+  buttonOnClick: () => void;
+  buttonIcon: boolean;
+}
 
-export const SecondaryHeader = () => {
+export const SecondaryHeader = ({
+  title,
+  subtitle,
+  buttonLabel,
+  buttonKind,
+  buttonOnClick,
+  buttonIcon,
+}: SecondaryHeaderProps) => {
   return (
     <Styled.Container>
       <Styled.Wrapper>
-        <Styled.Timesheets>Timesheets</Styled.Timesheets>
+        <Styled.Title>{title}</Styled.Title>
         <Styled.VerticalLine>|</Styled.VerticalLine>
-        <Styled.Entries>12 Entries</Styled.Entries>
+        <Styled.Subtitle>{subtitle}</Styled.Subtitle>
       </Styled.Wrapper>
-      <Button icon label="New time entry" style="primary" onClick={handleClick} />
+      <Button label={buttonLabel} kind={buttonKind} onClick={buttonOnClick} icon={{ buttonIcon }} />
     </Styled.Container>
   );
 };

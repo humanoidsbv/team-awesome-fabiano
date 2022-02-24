@@ -10,6 +10,8 @@ export const theme = {
   primaryRed: "#FFA2AD",
 
   //Shades
+  green3: "#19770A",
+  green2: "#1E990A",
   grey700: "#7F8FA4",
   grey4: "#9B9B9B",
   grey3: "#E6EAEE",
