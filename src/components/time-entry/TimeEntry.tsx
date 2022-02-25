@@ -1,18 +1,9 @@
 import * as Styled from "./TimeEntry.styled";
+import * as Types from "../time-entries/TimeEntries.types";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
 import React from "react";
-import { getTimeEntries, removeTimeEntry } from "../../services/time-entries-api";
-import { TimeEntries } from "../time-entries";
-import { getEntrypointInfo } from "next/dist/build/webpack/plugins/middleware-plugin";
-
-interface TimeEntryProps {
-  client: string;
-  id: number;
-  startTimestamp: string;
-  stopTimestamp: string;
-  setTimeEntries: () => void;
-}
+import { removeTimeEntry } from "../../services/time-entries-api";
 
 export const TimeEntry = ({
   id,
@@ -20,7 +11,7 @@ export const TimeEntry = ({
   startTimestamp,
   stopTimestamp,
   setTimeEntries,
-}: TimeEntryProps) => {
+}: Types.TimeEntryProps) => {
   const startTime = new Date(startTimestamp);
   const endTime = new Date(stopTimestamp);
 

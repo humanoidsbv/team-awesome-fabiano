@@ -1,4 +1,3 @@
-import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
 import { NotFoundError } from "../components/errors/NotFoundError";
 import * as Types from "../components/time-entries/TimeEntries.types";
 

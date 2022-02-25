@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.primaryWhite};
+  background-color: ${({ theme }) => theme.grey1};
   border-radius: 20px;
   display: flex;
   height: 40px;

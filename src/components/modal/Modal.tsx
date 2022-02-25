@@ -2,30 +2,17 @@ import React, { useState, useRef } from "react";
 
 import { createPortal } from "react-dom";
 import { Button } from "../button/Button";
+
 import * as Styled from "./Modal.styled";
+import * as Types from "../time-entries/TimeEntries.types";
 
 import CloseArrowIcon from "../../../public/icons/close-arrow.svg";
 
-interface ModalProps {
-  children?: string;
-  isActive: boolean;
-  onClose: () => void;
-  handleAddButtonClick: (newTimeEntry) => void;
-}
-
-interface ITimeEntry {
-  client: string;
-  activity: string;
-  date: string;
-  startTimestamp: string;
-  stopTimestamp: string;
-}
-
-export const Modal = ({ children, isActive, onClose, handleAddButtonClick }: ModalProps) => {
+export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const [newTimeEntry, setNewTimeEntry] = useState<ITimeEntry>({
+  const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>({
     client: "",
     activity: "",
     date: "",

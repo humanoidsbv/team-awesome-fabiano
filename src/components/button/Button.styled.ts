@@ -8,10 +8,10 @@ interface ButtonProps extends ThemeProps<typeof theme> {
 export const Button = styled.button(
   ({ theme, kind, disabled }: ButtonProps & HTMLButtonElement) => css`
     align-items: center;
-    background-color: ${theme.primaryGreen};
+    background-color: ${theme.green1};
     border-radius: 4px;
     border: none;
-    color: ${theme.primaryWhite};
+    color: ${theme.grey1};
     column-gap: 15px;
     cursor: pointer;
     display: flex;
@@ -36,7 +36,7 @@ export const Button = styled.button(
     ${kind === "secondary" &&
     css`
       background-color: ${theme.grey2};
-      color: ${theme.primaryGrey};
+      color: ${theme.grey6};
 
       :hover {
         background-color: ${theme.grey3};

@@ -12,7 +12,7 @@ export const DateWorkTimeWrapper = styled.div`
 `;
 
 export const Date = styled.p`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
   width: auto;

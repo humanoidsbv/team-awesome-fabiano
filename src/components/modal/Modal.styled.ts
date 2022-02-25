@@ -5,15 +5,17 @@ export const Container = styled.div`
     background: rgba(75, 84, 100, 0.8);
     height: 100%;
     left: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 80;
   }
 `;
 
-export const Modal = styled.div`
-  background-color: ${({ theme }) => theme.primaryWhite};
+export const Modal = styled.dialog`
+  background-color: ${({ theme }) => theme.grey1};
+  border: none;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -38,7 +40,7 @@ export const CloseButton = styled.button`
 `;
 
 export const Title = styled.p`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
@@ -60,7 +62,7 @@ export const InputFields = styled.div`
 `;
 
 export const ClientActivity = styled.p`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
@@ -73,7 +75,7 @@ export const ClientActivity = styled.p`
 `;
 
 export const Date = styled.p`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
@@ -81,7 +83,7 @@ export const Date = styled.p`
   padding: 20px 20px 0 20px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
-    padding: 20px 0px 0 30px;
+    padding: 20px 0 0 30px;
   }
 `;
 
@@ -94,7 +96,7 @@ export const InputBig = styled.input`
   padding: 13px 15px;
 
   :invalid {
-    border: 1px solid ${({ theme }) => theme.primaryRed};
+    border: 1px solid ${({ theme }) => theme.red1};
   }
 `;
 
@@ -112,12 +114,12 @@ export const InputDate = styled.input`
   }
 
   :invalid {
-    border: 1px solid ${({ theme }) => theme.primaryRed};
+    border: 1px solid ${({ theme }) => theme.red1};
   }
 `;
 
 export const FromTo = styled.p`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   display: flex;
   flex-direction: column;
   font-family: ${({ theme }) => theme.fontPrimary};
@@ -140,7 +142,7 @@ export const InputSmall = styled.input`
   }
 
   :invalid {
-    border: 1px solid ${({ theme }) => theme.primaryRed};
+    border: 1px solid ${({ theme }) => theme.red1};
   }
 `;
 
@@ -166,7 +168,7 @@ export const DateFromTo = styled.div`
 `;
 
 export const SumWorkTime = styled.div`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 24px;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.primaryWhite};
+  background-color: ${({ theme }) => theme.grey1};
   display: flex;
   flex-direction: column;
   height: 118px;
@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  color: ${({ theme }) => theme.primaryGrey};
+  color: ${({ theme }) => theme.grey6};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 18px;
 `;
@@ -50,7 +50,7 @@ export const VerticalLine = styled.div`
   display: none;
 
   @media screen and (${({ theme }) => theme.mobileSmall}) {
-    color: ${({ theme }) => theme.grey700};
+    color: ${({ theme }) => theme.grey5};
     display: flex;
     font-family: ${({ theme }) => theme.fontPrimary};
     font-size: 18px;
@@ -58,7 +58,7 @@ export const VerticalLine = styled.div`
 `;
 
 export const Subtitle = styled.p`
-  color: ${({ theme }) => theme.grey700};
+  color: ${({ theme }) => theme.grey5};
   font-family: ${({ theme }) => theme.fontPrimary};
   font-size: 14px;
 `;
