@@ -31,13 +31,11 @@ export const TimeEntries = (props) => {
     });
   };
 
-  const amountOfEntries = timeEntries.length;
-
   return (
     <div>
       <SecondaryHeader
         title="Timesheets"
-        subtitle={`${amountOfEntries} Entries`}
+        subtitle={`${timeEntries.length} Entries`}
         buttonLabel="New time entry"
         buttonKind="primary"
         buttonOnClick={() => setIsModalActive(true)}
