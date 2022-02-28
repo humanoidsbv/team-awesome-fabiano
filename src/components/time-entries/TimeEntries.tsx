@@ -31,6 +31,33 @@ export const TimeEntries = (props) => {
     });
   };
 
+  const formatDuration = (duration: number) => {
+    const hours = Number.parseInt(String(duration / 1000 / 60 / 60)).toString();
+    const minutes = Number.parseInt(String((duration / 1000 / 60) % 60)).toString();
+    return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
+  };
+
+  const getDurationByDay = (isoDate: string, timeEntries: Types.TimeEntryProps[]) => {
+    const calculateDuration = ({
+      startTimestamp,
+      stopTimestamp,
+    }: {
+      startTimestamp: string;
+      stopTimestamp: string;
+    }) => {
+      return new Date(stopTimestamp).getTime() - new Date(startTimestamp).getTime();
+    };
+
+    const duration = timeEntries
+      .filter(
+        ({ startTimestamp }) =>
+          new Date(startTimestamp).toDateString() === new Date(isoDate).toDateString(),
+      )
+      .reduce((acc, timeEntry) => acc + calculateDuration(timeEntry), 0);
+
+    return formatDuration(duration);
+  };
+
   return (
     <div>
       <SecondaryHeader
@@ -51,6 +78,9 @@ export const TimeEntries = (props) => {
               {currentDate !== previousDate && (
                 <Styled.DateWorkTimeWrapper>
                   <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
+                  <Styled.Date>
+                    {getDurationByDay(timeEntry.startTimestamp, timeEntries)}
+                  </Styled.Date>
                 </Styled.DateWorkTimeWrapper>
               )}
               <TimeEntry {...timeEntry} setTimeEntries={setTimeEntries} />
