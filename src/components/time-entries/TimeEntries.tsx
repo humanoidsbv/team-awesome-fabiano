@@ -12,9 +12,11 @@ export const TimeEntries = (props) => {
   const [timeEntries, setTimeEntries] = useState(props.timeEntries);
   const [isModalActive, setIsModalActive] = useState(false);
 
-  function handleClick(newTimeEntry) {
-    addTimeEntry(newTimeEntry);
-    setTimeEntries([...timeEntries, newTimeEntry]);
+  async function handleClick(newTimeEntry) {
+    const formattedNewEntry = await addTimeEntry(newTimeEntry);
+    if (formattedNewEntry) {
+      setTimeEntries([...timeEntries, formattedNewEntry]);
+    }
   }
 
   timeEntries.sort(function (a, b) {
