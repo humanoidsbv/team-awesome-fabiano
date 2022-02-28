@@ -6,15 +6,31 @@ import { PageContainer } from "../src/components/page-container/";
 
 import GlobalStyle from "../styles/global";
 import { theme } from "../styles/theme";
+import { getTimeEntries } from "../src/services/time-entries-api";
+import * as Types from "../src/components/time-entries/TimeEntries.types";
 
-const Homepage = () => {
+interface HomepageProps {
+  timeEntries: Types.TimeEntryProps[];
+}
+
+export const getServerSideProps = async () => {
+  const timeEntries = await getTimeEntries();
+
+  return {
+    props: {
+      timeEntries,
+    },
+  };
+};
+
+const Homepage = ({ timeEntries }: HomepageProps) => {
   return (
     <>
       <GlobalStyle />
       <ThemeProvider {...{ theme }}>
         <Header />
         <PageContainer>
-          <TimeEntries />
+          <TimeEntries timeEntries={timeEntries} />
         </PageContainer>
       </ThemeProvider>
     </>

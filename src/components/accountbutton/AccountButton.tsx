@@ -7,7 +7,7 @@ export const AccountButton = () => {
     <Styled.Container>
       <Styled.Wrapper>
         <Styled.HumanoidsLogo src="/icons/humanoids_logo.svg" />
-        <Styled.ProfilePic src="/images/amijs.jpg" />
+        <Styled.ProfilePic src="/images/fabiano.jpg" />
       </Styled.Wrapper>
       <Styled.ArrowDownIcon>
         <ArrowDownIcon />

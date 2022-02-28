@@ -1,7 +1,18 @@
-export interface TimeEntry {
+import { SetStateAction } from "react";
+
+export interface ModalProps {
+  children?: string;
+  isActive: boolean;
+  onClose: () => void;
+  handleAddButtonClick: (newTimeEntry: TimeEntryProps) => void;
+}
+
+export interface TimeEntryProps {
+  date?: string;
+  activity?: string;
   client: string;
-  stopTimestamp: string;
-  id: number;
+  id?: number;
   startTimestamp: string;
-  activity: string;
+  stopTimestamp: string;
+  setTimeEntries?: Dispatch<SetStateAction<[]>>;
 }

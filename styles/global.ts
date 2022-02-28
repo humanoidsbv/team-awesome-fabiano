@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      background-color: ${({ theme }) => theme.grey3};
+      background-color: ${({ theme }) => theme.grey2};
     }
 
     @font-face {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   align-items: center;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.blue1};
   display: flex;
   height: 70px;
   justify-content: space-between;
@@ -31,7 +31,7 @@ export const ToggleButton = styled.button`
 `;
 
 export const Logo = styled.a`
-  color: ${({ theme }) => theme.primaryWhite};
+  color: ${({ theme }) => theme.grey1};
   display: flex;
   font-family: ${({ theme }) => theme.fontSecondary};
   font-size: 26px;
@@ -40,9 +40,9 @@ export const Logo = styled.a`
 `;
 
 export const MenuList = styled.ul<{ isActive: boolean }>`
-  background-color: ${({ theme }) => theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.blue1};
   bottom: 0;
-  color: ${({ theme }) => theme.primaryWhite};
+  color: ${({ theme }) => theme.grey1};
   display: ${(props) => (props.isActive ? "flex" : "none")};
   flex-direction: column;
   left: 0;
@@ -58,14 +58,14 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
   }
 
   a {
-    color: ${({ theme }) => theme.primaryWhite};
+    color: ${({ theme }) => theme.grey1};
     font-family: ${({ theme }) => theme.fontPrimary};
     font-size: 24px;
     padding: 13px 20px;
     text-decoration: none;
 
     :hover {
-      background-color: ${({ theme }) => theme.backgroundSecondaryHover};
+      background-color: ${({ theme }) => theme.blue2};
       border-radius: 2px;
     }
 
@@ -89,7 +89,7 @@ export const MenuList = styled.ul<{ isActive: boolean }>`
 
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.blue1};
   display: flex;
   height: 70px;
   justify-content: start;

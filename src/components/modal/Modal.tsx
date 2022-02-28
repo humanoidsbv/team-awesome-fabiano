@@ -2,30 +2,17 @@ import React, { useState, useRef } from "react";
 
 import { createPortal } from "react-dom";
 import { Button } from "../button/Button";
+
 import * as Styled from "./Modal.styled";
+import * as Types from "../time-entries/TimeEntries.types";
 
 import CloseArrowIcon from "../../../public/icons/close-arrow.svg";
 
-interface ModalProps {
-  children?: string;
-  isActive: boolean;
-  onClose: () => void;
-  addButtonOnClick: (newTimeEntry) => void;
-}
-
-interface ITimeEntry {
-  client: string;
-  activity: string;
-  date: string;
-  startTimestamp: string;
-  stopTimestamp: string;
-}
-
-export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalProps) => {
+export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const [newTimeEntry, setNewTimeEntry] = useState<ITimeEntry>({
+  const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>({
     client: "",
     activity: "",
     date: "",
@@ -38,8 +25,6 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
-  console.log(formRef.current?.checkValidity());
-
   function handleSubmit(event: any) {
     event.preventDefault();
 
@@ -50,7 +35,7 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
       newTimeEntry.date + " " + newTimeEntry.stopTimestamp,
     ).toISOString();
 
-    addButtonOnClick({
+    handleAddButtonClick({
       ...newTimeEntry,
       startTimestamp,
       stopTimestamp,
@@ -58,6 +43,7 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
 
     setNewTimeEntry({});
   }
+
   return (
     isActive &&
     createPortal(
@@ -70,12 +56,12 @@ export const Modal = ({ children, isActive, onClose, addButtonOnClick }: ModalPr
             event.stopPropagation();
           }}
         >
-          <Styled.Entry>
+          <Styled.Title>
             New time entry
             <Styled.CloseButton onClick={onClose}>
               <CloseArrowIcon />
             </Styled.CloseButton>
-          </Styled.Entry>
+          </Styled.Title>
           <form ref={formRef}>
             <Styled.InputFields>
               <Styled.ClientActivity>
