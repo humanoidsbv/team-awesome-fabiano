@@ -3,7 +3,7 @@ import styled, { css, ThemeConsumer } from "styled-components";
 export const TimeEntry = styled.div`
   background-color: ${({ theme }) => theme.grey1};
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.grey4};
+  border: 1px solid ${({ theme }) => theme.grey3};
   display: flex;
   height: 82px;
 `;
@@ -26,7 +26,7 @@ export const WorkLocation = styled.p`
 
 export const TotalWorkHours = styled.div`
   align-items: flex-end;
-  column-gap: 10px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
   padding: 20px 0;

@@ -9,6 +9,10 @@ import { theme } from "../styles/theme";
 import { getTimeEntries } from "../src/services/time-entries-api";
 import * as Types from "../src/components/time-entries/TimeEntries.types";
 
+interface HomepageProps {
+  timeEntries: Types.TimeEntryProps[];
+}
+
 export const getServerSideProps = async () => {
   const timeEntries = await getTimeEntries();
 
@@ -18,10 +22,6 @@ export const getServerSideProps = async () => {
     },
   };
 };
-
-interface HomepageProps {
-  timeEntries: Types.TimeEntry[];
-}
 
 const Homepage = ({ timeEntries }: HomepageProps) => {
   return (

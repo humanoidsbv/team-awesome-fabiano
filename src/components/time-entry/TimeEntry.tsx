@@ -21,7 +21,7 @@ export const TimeEntry = ({
       minute: "2-digit",
     });
 
-  function handleDeleteButtonClick() {
+  function handleDelete() {
     removeTimeEntry(id);
     setTimeEntries((timeEntries) => timeEntries.filter((entry) => entry.id !== id));
   }
@@ -40,8 +40,8 @@ export const TimeEntry = ({
           <Styled.WorkTime>{formattedWorkHours}</Styled.WorkTime>
         </Styled.TotalWorkHours>
       </Styled.LocationHoursWrapper>
-      <Styled.TrashButton>
-        <TrashBinIcon onClick={handleDeleteButtonClick} />
+      <Styled.TrashButton onClick={handleDelete}>
+        <TrashBinIcon />
       </Styled.TrashButton>
     </Styled.TimeEntry>
   );

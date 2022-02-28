@@ -1,16 +1,10 @@
-export interface TimeEntry {
-  client: string;
-  stopTimestamp: string;
-  id: number;
-  startTimestamp: string;
-  activity: string;
-}
+import { SetStateAction } from "react";
 
 export interface ModalProps {
   children?: string;
   isActive: boolean;
   onClose: () => void;
-  handleAddButtonClick: (newTimeEntry) => void;
+  handleAddButtonClick: (newTimeEntry: TimeEntryProps) => void;
 }
 
 export interface TimeEntryProps {
@@ -20,5 +14,5 @@ export interface TimeEntryProps {
   id?: number;
   startTimestamp: string;
   stopTimestamp: string;
-  setTimeEntries?: () => void;
+  setTimeEntries?: Dispatch<SetStateAction<[]>>;
 }

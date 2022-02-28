@@ -1,7 +1,7 @@
 import { NotFoundError } from "../components/errors/NotFoundError";
 import * as Types from "../components/time-entries/TimeEntries.types";
 
-export async function getTimeEntries(): Promise<Types.TimeEntry[]> {
+export async function getTimeEntries(): Promise<Types.TimeEntryProps[]> {
   return fetch("http://localhost:3004/time-entries", {
     method: "GET",
     headers: {
@@ -18,7 +18,7 @@ export async function getTimeEntries(): Promise<Types.TimeEntry[]> {
     .catch((error) => error);
 }
 
-export async function addTimeEntry(newTimeEntry: Types.TimeEntry) {
+export async function addTimeEntry(newTimeEntry: Types.TimeEntryProps) {
   const response = await fetch("http://localhost:3004/time-entries", {
     method: "POST",
     headers: {
@@ -29,7 +29,7 @@ export async function addTimeEntry(newTimeEntry: Types.TimeEntry) {
   return response.json();
 }
 
-export async function removeTimeEntry(id) {
+export async function removeTimeEntry(id: number) {
   const response = await fetch("http://localhost:3004/time-entries/" + id, {
     method: "DELETE",
     headers: {

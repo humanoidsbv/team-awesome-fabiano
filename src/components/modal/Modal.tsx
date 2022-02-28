@@ -25,8 +25,6 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
-  console.log(formRef.current?.checkValidity());
-
   function handleSubmit(event: any) {
     event.preventDefault();
 
@@ -45,6 +43,15 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
 
     setNewTimeEntry({});
   }
+
+  // const timeFormatter = (time: Date) =>
+  //   time.toLocaleTimeString("nl-NL", {
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //   });
+
+  // const workHours = new Date(stopTimestamp.getTime() - startTimestamp.getTime());
+
   return (
     isActive &&
     createPortal(

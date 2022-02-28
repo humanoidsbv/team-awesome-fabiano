@@ -31,18 +31,20 @@ export const TimeEntries = (props) => {
     });
   };
 
+  const amountOfEntries = timeEntries.length;
+
   return (
     <div>
       <SecondaryHeader
         title="Timesheets"
-        subtitle="12 Entries"
+        subtitle={`${amountOfEntries} Entries`}
         buttonLabel="New time entry"
         buttonKind="primary"
         buttonOnClick={() => setIsModalActive(true)}
         buttonIcon={true}
       />
       <Styled.Container>
-        {timeEntries.map((timeEntry: Types.TimeEntry, i, array) => {
+        {timeEntries.map((timeEntry: Types.TimeEntryProps, i, array) => {
           const currentDate = formattedEntryDate(timeEntry.startTimestamp);
           const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
 

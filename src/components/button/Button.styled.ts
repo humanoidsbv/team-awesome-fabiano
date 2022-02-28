@@ -6,7 +6,7 @@ interface ButtonProps extends ThemeProps<typeof theme> {
 }
 
 export const Button = styled.button(
-  ({ theme, kind, disabled }: ButtonProps & HTMLButtonElement) => css`
+  ({ disabled, kind, theme }: ButtonProps & HTMLButtonElement) => css`
     align-items: center;
     background-color: ${theme.green1};
     border-radius: 4px;

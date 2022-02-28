@@ -39,7 +39,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const Title = styled.p`
+export const Title = styled.div`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};
@@ -61,7 +61,7 @@ export const InputFields = styled.div`
   width: 100%;
 `;
 
-export const ClientActivity = styled.p`
+export const ClientActivity = styled.div`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   flex-direction: column;
@@ -74,7 +74,7 @@ export const ClientActivity = styled.p`
   }
 `;
 
-export const Date = styled.p`
+export const Date = styled.div`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   flex-direction: column;
@@ -118,7 +118,7 @@ export const InputDate = styled.input`
   }
 `;
 
-export const FromTo = styled.p`
+export const FromTo = styled.div`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   flex-direction: column;
