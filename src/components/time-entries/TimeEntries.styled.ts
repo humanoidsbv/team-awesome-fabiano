@@ -21,3 +21,5 @@ export const Date = styled.p`
     font-size: 24px;
   }
 `;
+
+export const WorkTime = styled.p``;
