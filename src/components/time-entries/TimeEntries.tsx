@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import * as Styled from "./TimeEntries.styled";
+import * as Types from "../time-entries/TimeEntries.types";
 
 import { TimeEntry } from "../time-entry/";
 import { Modal } from "../modal";
@@ -41,7 +42,7 @@ export const TimeEntries = (props) => {
         buttonIcon={true}
       />
       <Styled.Container>
-        {timeEntries.map((timeEntry, i, array) => {
+        {timeEntries.map((timeEntry: Types.TimeEntry, i, array) => {
           const currentDate = formattedEntryDate(timeEntry.startTimestamp);
           const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
 
