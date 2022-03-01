@@ -10,7 +10,7 @@ export async function getTimeEntries(): Promise<Types.TimeEntryProps[]> {
   })
     .then((response) => {
       if (response.status === 404) {
-        throw new NotFoundError(response);
+        throw new NotFoundError("Did not find time entry");
       }
       return response;
     })

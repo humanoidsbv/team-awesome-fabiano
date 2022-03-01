@@ -1,4 +1,4 @@
-import { SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export interface ModalProps {
   children?: string;
@@ -14,5 +14,4 @@ export interface TimeEntryProps {
   id?: number;
   startTimestamp: string;
   stopTimestamp: string;
-  setTimeEntries?: Dispatch<SetStateAction<[]>>;
 }

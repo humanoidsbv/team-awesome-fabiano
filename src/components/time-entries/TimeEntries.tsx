@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import * as Styled from "./TimeEntries.styled";
 import * as Types from "../time-entries/TimeEntries.types";
@@ -7,12 +7,22 @@ import { TimeEntry } from "../time-entry/";
 import { Modal } from "../modal";
 import { SecondaryHeader } from "../secondary-header";
 import { addTimeEntry } from "../../services/time-entries-api";
+import { StoreContext } from "../context-provider/ContextProvider";
 
-export const TimeEntries = (props) => {
-  const [timeEntries, setTimeEntries] = useState(props.timeEntries);
+interface TimeEntriesProps {
+  timeEntries: Types.TimeEntryProps[];
+}
+
+export const TimeEntries = (props: TimeEntriesProps) => {
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState(false);
 
-  async function handleClick(newTimeEntry) {
+  useEffect(() => {
+    setTimeEntries(props.timeEntries);
+  }, []);
+
+  async function handleClick(newTimeEntry: Types.TimeEntryProps) {
     const formattedNewEntry = await addTimeEntry(newTimeEntry);
     if (formattedNewEntry) {
       setTimeEntries([...timeEntries, formattedNewEntry]);
@@ -85,7 +95,7 @@ export const TimeEntries = (props) => {
                   </Styled.Date>
                 </Styled.DateWorkTimeWrapper>
               )}
-              <TimeEntry {...timeEntry} setTimeEntries={setTimeEntries} />
+              <TimeEntry {...timeEntry} />
             </React.Fragment>
           );
         })}

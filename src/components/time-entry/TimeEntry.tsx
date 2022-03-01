@@ -2,18 +2,16 @@ import * as Styled from "./TimeEntry.styled";
 import * as Types from "../time-entries/TimeEntries.types";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
-import React from "react";
+import React, { useContext } from "react";
 import { removeTimeEntry } from "../../services/time-entries-api";
+import { StoreContext } from "../context-provider";
 
-export const TimeEntry = ({
-  id,
-  client,
-  startTimestamp,
-  stopTimestamp,
-  setTimeEntries,
-}: Types.TimeEntryProps) => {
+export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: Types.TimeEntryProps) => {
   const startTime = new Date(startTimestamp);
   const endTime = new Date(stopTimestamp);
+
+  const state = useContext(StoreContext);
+  const [, setTimeEntries] = state.timeEntries;
 
   const timeFormatter = (time: Date) =>
     time.toLocaleTimeString("nl-NL", {
@@ -21,15 +19,17 @@ export const TimeEntry = ({
       minute: "2-digit",
     });
 
-  function handleDelete() {
-    removeTimeEntry(id);
-    setTimeEntries((timeEntries) => timeEntries.filter((entry) => entry.id !== id));
-  }
-
   const formattedStartTime = timeFormatter(startTime);
   const formattedEndTime = timeFormatter(endTime);
   const workHours = new Date(endTime.getTime() - startTime.getTime() - 3600000);
   const formattedWorkHours = timeFormatter(workHours);
+
+  async function handleDelete() {
+    setTimeEntries((timeEntries: Types.TimeEntryProps[]) =>
+      timeEntries.filter((entry) => entry.id !== id),
+    );
+    removeTimeEntry(id as number);
+  }
 
   return (
     <Styled.TimeEntry>
