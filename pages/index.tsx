@@ -32,7 +32,7 @@ const Homepage = ({ timeEntries }: HomepageProps) => {
         <ThemeProvider {...{ theme }}>
           <Header />
           <PageContainer>
-            <TimeEntries timeEntries={timeEntries} />
+            <TimeEntries {...{ timeEntries }} />
           </PageContainer>
         </ThemeProvider>
       </StoreProvider>
