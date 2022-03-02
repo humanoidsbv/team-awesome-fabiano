@@ -9,12 +9,10 @@ const TeamMembers = () => {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider {...{ theme }}>
-        <Header />
-        <PageContainer>
-          <MemberEntries />
-        </PageContainer>
-      </ThemeProvider>
+      <Header />
+      <PageContainer>
+        <MemberEntries />
+      </PageContainer>
     </>
   );
 };

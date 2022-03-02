@@ -1,4 +1,4 @@
-import styled, { css, ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 
 export const TimeEntry = styled.div`
   background-color: ${({ theme }) => theme.grey1};
