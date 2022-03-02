@@ -10,7 +10,7 @@ import CloseArrowIcon from "../../../public/icons/close-arrow.svg";
 
 export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalProps) => {
   const formRef = useRef<HTMLFormElement | null>(null);
-  const [isFormValid, setIsFormValid] = useState<boolean | undefined>(false);
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
   const [newTimeEntry, setNewTimeEntry] = useState<Types.TimeEntryProps>({
     client: "",
@@ -21,7 +21,7 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
   });
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setIsFormValid(formRef.current?.checkValidity());
+    setIsFormValid(formRef.current!.checkValidity());
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
@@ -48,12 +48,12 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
     ? createPortal(
         <Styled.Container onClick={onClose}>
           <Styled.Modal
-            role="dialog"
             aria-labelledby="dialog"
             aria-modal="true"
             onClick={(event) => {
               event.stopPropagation();
             }}
+            role="dialog"
           >
             <Styled.Title>
               New time entry
@@ -66,21 +66,21 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
                 <Styled.ClientActivity>
                   Client
                   <Styled.InputBig
-                    type="text"
                     name="client"
-                    value={newTimeEntry.client ?? ""}
                     onChange={handleChange}
                     required
+                    type="text"
+                    value={newTimeEntry.client ?? ""}
                   />
                 </Styled.ClientActivity>
                 <Styled.ClientActivity>
                   Activity
                   <Styled.InputBig
-                    type="text"
                     name="activity"
-                    value={newTimeEntry.activity ?? ""}
                     onChange={handleChange}
                     required
+                    type="text"
+                    value={newTimeEntry.activity ?? ""}
                   />
                 </Styled.ClientActivity>
               </Styled.InputFields>
@@ -88,32 +88,32 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
                 <Styled.Date>
                   Date
                   <Styled.InputDate
-                    type="date"
                     name="date"
-                    value={newTimeEntry.date ?? ""}
                     onChange={handleChange}
                     required
+                    type="date"
+                    value={newTimeEntry.date ?? ""}
                   />
                 </Styled.Date>
                 <Styled.FromToTotal>
                   <Styled.FromTo>
                     From
                     <Styled.InputSmall
-                      type="time"
                       name="startTimestamp"
-                      value={newTimeEntry.startTimestamp ?? ""}
                       onChange={handleChange}
                       required
+                      type="time"
+                      value={newTimeEntry.startTimestamp ?? ""}
                     />
                   </Styled.FromTo>
                   <Styled.FromTo>
                     To
                     <Styled.InputSmall
-                      type="time"
                       name="stopTimestamp"
-                      value={newTimeEntry.stopTimestamp ?? ""}
                       onChange={handleChange}
                       required
+                      type="time"
+                      value={newTimeEntry.stopTimestamp ?? ""}
                     />
                   </Styled.FromTo>
                   <Styled.FromTo>
@@ -126,9 +126,9 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
             <Styled.Buttons>
               <Button label="Cancel" kind="secondary" onClick={onClose} />
               <Button
+                disabled={!isFormValid}
                 label="Add time entry"
                 onClick={(event) => handleSubmit(event)}
-                disabled={!isFormValid}
               />
             </Styled.Buttons>
           </Styled.Modal>
