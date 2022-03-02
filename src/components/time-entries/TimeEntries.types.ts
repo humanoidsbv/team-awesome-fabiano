@@ -1,5 +1,3 @@
-import { SetStateAction } from "react";
-
 export interface ModalProps {
   children?: string;
   isActive: boolean;
@@ -8,11 +6,10 @@ export interface ModalProps {
 }
 
 export interface TimeEntryProps {
-  date?: string;
-  activity?: string;
+  date: string;
+  activity: string;
   client: string;
   id?: number;
   startTimestamp: string;
   stopTimestamp: string;
-  setTimeEntries?: Dispatch<SetStateAction<[]>>;
 }

@@ -28,7 +28,7 @@ export const SecondaryHeader = ({
         <Styled.VerticalLine>|</Styled.VerticalLine>
         <Styled.Subtitle>{subtitle}</Styled.Subtitle>
       </Styled.Wrapper>
-      <Button label={buttonLabel} kind={buttonKind} onClick={buttonOnClick} icon={{ buttonIcon }} />
+      <Button label={buttonLabel} kind={buttonKind} onClick={buttonOnClick} icon={buttonIcon} />
     </Styled.Container>
   );
 };
