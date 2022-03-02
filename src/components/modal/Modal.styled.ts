@@ -154,7 +154,7 @@ export const Buttons = styled.div`
   display: flex;
   gap: 30px;
   justify-content: space-between;
-  margin: auto 10px 20px 10px;
+  margin: auto 20px 20px 20px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     margin: auto 30px 30px 30px;
