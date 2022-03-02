@@ -1,11 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
+import * as Styled from "./MemberEntries.styled";
+import * as Types from "../member-entries/MemberEntries.types";
 
 import { SecondaryHeader } from "../secondary-header";
 import { MemberEntry } from "../member-entry";
 import { MemberModal } from "../member-modal";
+import { StoreContext } from "../context-provider";
+import { addMemberEntry } from "../../services/team-members-api";
 
-export const MemberEntries = () => {
+interface MemberEntriesProps {
+  teamMembers: Types.MemberEntryProps[];
+}
+
+export const MemberEntries = (props: MemberEntriesProps) => {
+  const state = useContext(StoreContext);
+  const [teamMembers, setTeamMembers] = useState(props.teamMembers);
   const [isMemberModalActive, setIsMemberModalActive] = useState(false);
+
+  useEffect(() => {
+    setTeamMembers(props.teamMembers);
+  }, []);
+
+  async function handleClick(newMemberEntry: Types.MemberEntryProps) {
+    const formattedNewEntry = await addMemberEntry(newMemberEntry);
+    if (formattedNewEntry) {
+      setTeamMembers([...teamMembers, formattedNewEntry]);
+    }
+  }
+
   return (
     <>
       <SecondaryHeader
@@ -16,8 +39,20 @@ export const MemberEntries = () => {
         buttonOnClick={() => setIsMemberModalActive(true)}
         buttonIcon={true}
       />
-      <MemberEntry />
-      <MemberModal isActive={isMemberModalActive} onClose={() => setIsMemberModalActive(false)} />
+      <Styled.Container>
+        {teamMembers.map((teamMember: Types.MemberEntryProps, i, array) => {
+          return (
+            <React.Fragment key={teamMember.id}>
+              <MemberEntry {...teamMember} />
+            </React.Fragment>
+          );
+        })}
+        <MemberModal
+          isActive={isMemberModalActive}
+          onClose={() => setIsMemberModalActive(false)}
+          handleAddButtonClick={handleClick}
+        />
+      </Styled.Container>
     </>
   );
 };

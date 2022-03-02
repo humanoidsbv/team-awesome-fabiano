@@ -38,5 +38,37 @@
       "stopTimestamp": "2022-03-19T09:10:00.000Z",
       "id": 6
     }
+  ],
+  "team-members": [
+    {
+      "firstName": "Fabiano",
+      "lastName": "van Gool",
+      "emailAddress": "fabiano.van.gool@humanoids.nl",
+      "label": "bla bla",
+      "employer": "Nikon Japan",
+      "role": "Full-stack Developer",
+      "startingDate": "february 2022",
+      "id": 203492035980298
+    },
+    {
+      "firstName": "Vico",
+      "lastName": "Magistretti",
+      "emailAddress": "vico@magistretti.it",
+      "label": "Design overlord.",
+      "employer": "Fabi Industries",
+      "role": "Design Lead",
+      "startingDate": "2022-03-02",
+      "id": 203492035980299
+    },
+    {
+      "firstName": "Neal",
+      "lastName": "Stephenson",
+      "emailAddress": "neal@stephenson.com",
+      "label": "Famous cyberpunk writer.",
+      "employer": "OCW",
+      "role": "Ideological Navigator",
+      "startingDate": "2022-02-17",
+      "id": 203492035980300
+    }
   ]
 }
