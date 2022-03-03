@@ -33,7 +33,7 @@ export const MemberEntries = (props: MemberEntriesProps) => {
     <>
       <SecondaryHeader
         title="Team members"
-        subtitle="1 Humanoids"
+        subtitle={`${teamMembers.length} Humanoids`}
         buttonLabel="New Humanoid"
         buttonKind="primary"
         buttonOnClick={() => setIsMemberModalActive(true)}
