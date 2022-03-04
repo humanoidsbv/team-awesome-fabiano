@@ -5,7 +5,7 @@ import * as Types from "../time-entries/TimeEntries.types";
 
 import { TimeEntry } from "../time-entry/";
 import { Modal } from "../modal";
-import { SecondaryHeader } from "../secondary-header";
+import { SecondaryHeader } from "../subheader";
 import { addTimeEntry } from "../../services/time-entries-api";
 import { StoreContext } from "../context-provider/ContextProvider";
 
@@ -36,9 +36,9 @@ export const TimeEntries = (props: TimeEntriesProps) => {
   const formattedEntryDate = (date: string) => {
     const formattedDate = new Date(date);
 
-    return formattedDate.toLocaleDateString("en-GB", {
+    return formattedDate.toLocaleDateString("nl-NL", {
       day: "numeric",
-      month: "short",
+      month: "2-digit",
       year: "numeric",
     });
   };
@@ -84,12 +84,17 @@ export const TimeEntries = (props: TimeEntriesProps) => {
         {timeEntries.map((timeEntry: Types.TimeEntryProps, i, array) => {
           const currentDate = formattedEntryDate(timeEntry.startTimestamp);
           const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
+          const day = new Date(timeEntry.startTimestamp).toLocaleString("en-GB", {
+            weekday: "long",
+          });
 
           return (
             <React.Fragment key={timeEntry.id}>
               {currentDate !== previousDate && (
                 <Styled.DateWorkTimeWrapper>
-                  <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
+                  <Styled.Date>{`${day} ${formattedEntryDate(
+                    timeEntry.startTimestamp,
+                  )}`}</Styled.Date>
                   <Styled.Date>
                     {getDurationByDay(timeEntry.startTimestamp, timeEntries)}
                   </Styled.Date>

@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import * as Styled from "./MemberEntries.styled";
 import * as Types from "../member-entries/MemberEntries.types";
 
-import { SecondaryHeader } from "../secondary-header";
+import { SecondaryHeader } from "../subheader";
 import { MemberEntry } from "../member-entry";
 import { MemberModal } from "../member-modal";
 import { StoreContext } from "../context-provider";

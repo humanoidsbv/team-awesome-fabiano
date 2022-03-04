@@ -1,8 +1,8 @@
-import * as Styled from "./SecondaryHeader.styled";
+import * as Styled from "./Subheader.styled";
 
 import React, { useState } from "react";
 
-import { Button } from "../button/";
+import { Button } from "../button";
 
 interface SecondaryHeaderProps {
   title: string;

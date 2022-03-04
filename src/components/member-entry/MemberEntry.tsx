@@ -12,6 +12,11 @@ export const MemberEntry = ({
 }: Types.MemberEntryProps) => {
   const state = useContext(StoreContext);
 
+  const formattedStartingDate = new Date(startingDate).toLocaleString("en-GB", {
+    month: "long",
+    year: "numeric",
+  });
+
   return (
     <Styled.Container>
       <Styled.Wrapper>
@@ -28,7 +33,7 @@ export const MemberEntry = ({
             <Styled.Role>Client</Styled.Role>
           </Styled.Client>
           <Styled.Date>
-            <Styled.Value>{startingDate}</Styled.Value>
+            <Styled.Value>{formattedStartingDate}</Styled.Value>
             <Styled.Role>Starting date</Styled.Role>
           </Styled.Date>
         </Styled.AssignmentContainer>
