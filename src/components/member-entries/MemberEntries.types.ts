@@ -10,7 +10,7 @@ export interface MemberEntryProps {
   lastName: string;
   emailAddress: string;
   label: string;
-  employer: string;
+  client: string;
   role: string;
   startingDate: string;
   id?: number;

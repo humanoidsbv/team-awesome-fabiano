@@ -4,15 +4,13 @@ import { useContext } from "react";
 import { StoreContext } from "../context-provider";
 
 export const MemberEntry = ({
-  id,
+  client,
   firstName,
   lastName,
   role,
   startingDate,
-  employer,
 }: Types.MemberEntryProps) => {
   const state = useContext(StoreContext);
-  // const [, setTeamMembers] = state.teamMembers;
 
   return (
     <Styled.Container>
@@ -26,7 +24,7 @@ export const MemberEntry = ({
         </Styled.AvatarContainer>
         <Styled.AssignmentContainer>
           <Styled.Client>
-            <Styled.Value>{employer}</Styled.Value>
+            <Styled.Value>{client}</Styled.Value>
             <Styled.Role>Client</Styled.Role>
           </Styled.Client>
           <Styled.Date>

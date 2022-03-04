@@ -8,20 +8,20 @@ import { Button } from "../button";
 
 import CloseArrowIcon from "../../../public/icons/close-arrow.svg";
 
-export const MemberModal = ({
+export const MemberModal: React.FC<Types.MemberModalProps> = ({
   isActive,
   onClose,
   handleAddButtonClick,
-}: Types.MemberModalProps) => {
+}) => {
   const formRef = useRef<HTMLFormElement | null>(null);
-  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const [newMemberEntry, setNewMemberEntry] = useState({
-    firstName: "",
-    lastName: "",
+    client: "",
     emailAddress: "",
+    firstName: "",
     label: "",
-    employer: "",
+    lastName: "",
     role: "",
     startingDate: "",
   });
@@ -37,8 +37,6 @@ export const MemberModal = ({
     handleAddButtonClick({
       ...newMemberEntry,
     });
-
-    setNewMemberEntry({});
   }
 
   return isActive
@@ -108,13 +106,13 @@ export const MemberModal = ({
                     />
                   </Styled.InputName>
                   <Styled.InputName>
-                    Employer
+                    Client
                     <Styled.InputRegular
-                      name="employer"
+                      name="client"
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.employer ?? ""}
+                      value={newMemberEntry.client ?? ""}
                     />
                   </Styled.InputName>
                 </Styled.MiddleFields>

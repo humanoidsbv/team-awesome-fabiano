@@ -74,9 +74,21 @@ export const AssignmentContainer = styled.div`
 
 export const Client = styled.div`
   gap: 2px;
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 `;
 
 export const Date = styled.div`
   padding-left: 40px;
   gap: 2px;
+
+  @media screen and (${({ theme }) => theme.desktop}) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 `;

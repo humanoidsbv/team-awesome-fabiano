@@ -40,7 +40,7 @@ export const MemberEntries = (props: MemberEntriesProps) => {
         buttonIcon={true}
       />
       <Styled.Container>
-        {teamMembers.map((teamMember: Types.MemberEntryProps, i, array) => {
+        {teamMembers.map((teamMember) => {
           return (
             <React.Fragment key={teamMember.id}>
               <MemberEntry {...teamMember} />
