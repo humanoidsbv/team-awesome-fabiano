@@ -75,7 +75,7 @@ export const TimeEntries = (props: TimeEntriesProps) => {
 
   const [clientFilter, setClientFilter] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setClientFilter(event.target.value);
   };
 

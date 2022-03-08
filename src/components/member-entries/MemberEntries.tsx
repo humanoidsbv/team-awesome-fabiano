@@ -61,11 +61,18 @@ export const MemberEntries = (props: MemberEntriesProps) => {
   ];
 
   const [memberSort, setMemberSort] = useState("firstName");
+  type MemberKeysValues =
+    | "firstName"
+    | "lastName"
+    | "emailAddress"
+    | "label"
+    | "client"
+    | "role"
+    | "startingDate";
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setMemberSort(event.target.value);
   };
-  console.log(teamMembers.memberSort);
 
   return (
     <>
@@ -84,7 +91,9 @@ export const MemberEntries = (props: MemberEntriesProps) => {
       </select>
       <Styled.Container>
         {teamMembers
-          .sort((a, b) => a[memberSort].localeCompare(b[memberSort]))
+          .sort((a, b) =>
+            a[memberSort as MemberKeysValues].localeCompare(b[memberSort as MemberKeysValues]),
+          )
           .map((teamMember) => {
             return (
               <React.Fragment key={teamMember.id}>
