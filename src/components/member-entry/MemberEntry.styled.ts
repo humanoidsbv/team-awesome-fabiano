@@ -26,11 +26,11 @@ export const Wrapper = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  padding-left: 16px;
-  border-bottom: 1px solid ${({ theme }) => theme.grey3};
-  height: 50%;
-  display: flex;
   align-items: center;
+  border-bottom: 1px solid ${({ theme }) => theme.grey3};
+  display: flex;
+  height: 50%;
+  padding-left: 16px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     border-bottom: none;
@@ -45,8 +45,8 @@ export const AvatarImage = styled.img`
 `;
 
 export const AvatarNameRole = styled.div`
-  padding-left: 20px;
   gap: 2px;
+  padding-left: 20px;
 `;
 
 export const Value = styled.p`
@@ -62,10 +62,10 @@ export const Role = styled.p`
 `;
 
 export const AssignmentContainer = styled.div`
-  padding-left: 16px;
-  height: 50%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 50%;
+  padding-left: 16px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
     height: 100%;
@@ -76,19 +76,19 @@ export const Client = styled.div`
   gap: 2px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
   }
 `;
 
 export const Date = styled.div`
-  padding-left: 40px;
   gap: 2px;
+  padding-left: 40px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
   }
 `;

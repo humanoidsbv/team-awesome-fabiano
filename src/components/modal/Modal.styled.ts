@@ -39,7 +39,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};

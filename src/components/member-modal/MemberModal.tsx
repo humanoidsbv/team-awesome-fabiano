@@ -9,9 +9,9 @@ import { Button } from "../button";
 import CloseArrowIcon from "../../../public/icons/close-arrow.svg";
 
 export const MemberModal: React.FC<Types.MemberModalProps> = ({
+  handleAddButtonClick,
   isActive,
   onClose,
-  handleAddButtonClick,
 }) => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -143,14 +143,14 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                 </Styled.FullName>
               </Styled.InputFields>
             </form>
-            <Styled.Buttons>
+            <Styled.ButtonContainer>
               <Button label="Cancel" kind="secondary" onClick={onClose} />
               <Button
                 disabled={!isFormValid}
                 label="Add Humanoid"
                 onClick={(event) => handleSubmit(event)}
               />
-            </Styled.Buttons>
+            </Styled.ButtonContainer>
           </Styled.MemberModal>
         </Styled.Container>,
         document.body,

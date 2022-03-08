@@ -21,8 +21,8 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      timeEntries,
       clients,
+      timeEntries,
     },
   };
 };

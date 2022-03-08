@@ -1,17 +1,17 @@
 export interface MemberModalProps {
   children?: string;
+  handleAddButtonClick: (newMemberEntry: MemberEntryProps) => void;
   isActive: boolean;
   onClose: () => void;
-  handleAddButtonClick: (newMemberEntry: MemberEntryProps) => void;
 }
 
 export interface MemberEntryProps {
-  firstName: string;
-  lastName: string;
-  emailAddress: string;
-  label: string;
   client: string;
+  emailAddress: string;
+  firstName: string;
+  id?: number;
+  label: string;
+  lastName: string;
   role: string;
   startingDate: string;
-  id?: number;
 }

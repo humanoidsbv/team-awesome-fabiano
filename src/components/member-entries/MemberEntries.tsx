@@ -61,12 +61,12 @@ export const MemberEntries = (props: MemberEntriesProps) => {
   ];
 
   const [memberSort, setMemberSort] = useState("firstName");
-  type MemberKeysValues =
-    | "firstName"
-    | "lastName"
-    | "emailAddress"
-    | "label"
+  type MemberSortValues =
     | "client"
+    | "emailAddress"
+    | "firstName"
+    | "label"
+    | "lastName"
     | "role"
     | "startingDate";
 
@@ -77,12 +77,12 @@ export const MemberEntries = (props: MemberEntriesProps) => {
   return (
     <>
       <SecondaryHeader
-        title="Team members"
-        subtitle={`${teamMembers.length} Humanoids`}
-        buttonLabel="New Humanoid"
-        buttonKind="primary"
-        buttonOnClick={() => setIsMemberModalActive(true)}
         buttonIcon={true}
+        buttonKind="primary"
+        buttonLabel="New Humanoid"
+        buttonOnClick={() => setIsMemberModalActive(true)}
+        subtitle={`${teamMembers.length} Humanoids`}
+        title="Team members"
       />
       <select onChange={handleChange}>
         {memberKeys.map((memberKey) => {
@@ -92,7 +92,7 @@ export const MemberEntries = (props: MemberEntriesProps) => {
       <Styled.Container>
         {teamMembers
           .sort((a, b) =>
-            a[memberSort as MemberKeysValues].localeCompare(b[memberSort as MemberKeysValues]),
+            a[memberSort as MemberSortValues].localeCompare(b[memberSort as MemberSortValues]),
           )
           .map((teamMember) => {
             return (
@@ -102,9 +102,9 @@ export const MemberEntries = (props: MemberEntriesProps) => {
             );
           })}
         <MemberModal
+          handleAddButtonClick={handleClick}
           isActive={isMemberModalActive}
           onClose={() => setIsMemberModalActive(false)}
-          handleAddButtonClick={handleClick}
         />
       </Styled.Container>
     </>

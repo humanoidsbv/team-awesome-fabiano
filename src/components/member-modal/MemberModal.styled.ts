@@ -33,7 +33,7 @@ export const MemberModal = styled.div`
   }
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};
@@ -78,7 +78,7 @@ export const InputFields = styled.div`
 export const FullName = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 0 20px;
+  padding: 0 20px;
   gap: 20px;
 `;
 
@@ -118,7 +118,7 @@ export const MiddleFields = styled.div`
   padding: 0 20px;
 `;
 
-export const Buttons = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   gap: 30px;
   justify-content: space-between;

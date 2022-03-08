@@ -27,8 +27,8 @@ interface StoreProviderProps {
 export function StoreProvider({ children }: StoreProviderProps) {
   const store = {
     clients: useState<Types.ClientsProps[]>([]),
-    timeEntries: useState<Types.TimeEntryProps[]>([]),
     teamMembers: useState<TeamMemberTypes.MemberEntryProps[]>([]),
+    timeEntries: useState<Types.TimeEntryProps[]>([]),
   };
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
