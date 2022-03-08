@@ -19,6 +19,6 @@ export const theme = {
 
   // Breakpoints
   mobileLarge: "max-width: 1024px",
-  mobileSmall: "min-width: 500px",
+  mobileSmall: "min-width: 560px",
   desktop: "min-width: 1024px",
 };

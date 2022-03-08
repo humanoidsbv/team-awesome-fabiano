@@ -38,3 +38,20 @@ export async function removeTimeEntry(id: number) {
   });
   return response.json();
 }
+
+export async function getClients() {
+  return fetch("http://localhost:3004/clients", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.status === 404) {
+        throw new NotFoundError("Did not find time entry");
+      }
+      return response;
+    })
+    .then((response) => response.json())
+    .catch((error) => error);
+}

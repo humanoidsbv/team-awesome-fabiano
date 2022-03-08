@@ -1,1 +1,0 @@
-export { SecondaryHeader } from "./SecondaryHeader";

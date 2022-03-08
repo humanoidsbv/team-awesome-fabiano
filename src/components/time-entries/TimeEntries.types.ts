@@ -13,3 +13,8 @@ export interface TimeEntryProps {
   startTimestamp: string;
   stopTimestamp: string;
 }
+
+export interface ClientsProps {
+  id: number;
+  name: string;
+}

@@ -39,7 +39,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h1`
   color: ${({ theme }) => theme.grey5};
   display: flex;
   font-family: ${({ theme }) => theme.fontPrimary};
@@ -154,10 +154,10 @@ export const Buttons = styled.div`
   display: flex;
   gap: 30px;
   justify-content: space-between;
-  margin: auto 10px 20px 10px;
+  margin: auto 20px 20px;
 
   @media screen and (${({ theme }) => theme.desktop}) {
-    margin: auto 30px 30px 30px;
+    margin: auto 30px 30px;
   }
 `;
 

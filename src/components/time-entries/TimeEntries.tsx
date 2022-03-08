@@ -5,21 +5,24 @@ import * as Types from "../time-entries/TimeEntries.types";
 
 import { TimeEntry } from "../time-entry/";
 import { Modal } from "../modal";
-import { SecondaryHeader } from "../secondary-header";
+import { SecondaryHeader } from "../subheader";
 import { addTimeEntry } from "../../services/time-entries-api";
 import { StoreContext } from "../context-provider/ContextProvider";
 
 interface TimeEntriesProps {
   timeEntries: Types.TimeEntryProps[];
+  clients: Types.ClientsProps[];
 }
 
 export const TimeEntries = (props: TimeEntriesProps) => {
   const state = useContext(StoreContext);
   const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState(false);
+  const [clients, setClients] = state.clients;
 
   useEffect(() => {
     setTimeEntries(props.timeEntries);
+    setClients(props.clients);
   }, []);
 
   async function handleClick(newTimeEntry: Types.TimeEntryProps) {
@@ -36,9 +39,9 @@ export const TimeEntries = (props: TimeEntriesProps) => {
   const formattedEntryDate = (date: string) => {
     const formattedDate = new Date(date);
 
-    return formattedDate.toLocaleDateString("en-GB", {
+    return formattedDate.toLocaleDateString("nl-NL", {
       day: "numeric",
-      month: "short",
+      month: "2-digit",
       year: "numeric",
     });
   };
@@ -70,6 +73,12 @@ export const TimeEntries = (props: TimeEntriesProps) => {
     return formatDuration(duration);
   };
 
+  const [clientFilter, setClientFilter] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setClientFilter(event.target.value);
+  };
+
   return (
     <div>
       <SecondaryHeader
@@ -80,25 +89,37 @@ export const TimeEntries = (props: TimeEntriesProps) => {
         buttonOnClick={() => setIsModalActive(true)}
         buttonIcon={true}
       />
-      <Styled.Container>
-        {timeEntries.map((timeEntry: Types.TimeEntryProps, i, array) => {
-          const currentDate = formattedEntryDate(timeEntry.startTimestamp);
-          const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
-
-          return (
-            <React.Fragment key={timeEntry.id}>
-              {currentDate !== previousDate && (
-                <Styled.DateWorkTimeWrapper>
-                  <Styled.Date>{formattedEntryDate(timeEntry.startTimestamp)}</Styled.Date>
-                  <Styled.Date>
-                    {getDurationByDay(timeEntry.startTimestamp, timeEntries)}
-                  </Styled.Date>
-                </Styled.DateWorkTimeWrapper>
-              )}
-              <TimeEntry {...timeEntry} />
-            </React.Fragment>
-          );
+      <select onChange={handleChange}>
+        {clients.map((client: Types.ClientsProps) => {
+          return <option value={client.name ?? ""}>{client.name}</option>;
         })}
+      </select>
+      <Styled.Container>
+        {timeEntries
+          .filter((entry) => (clientFilter !== "" ? entry.client === clientFilter : true))
+          .map((timeEntry: Types.TimeEntryProps, i, array) => {
+            const currentDate = formattedEntryDate(timeEntry.startTimestamp);
+            const previousDate = formattedEntryDate(array[i - 1]?.startTimestamp);
+            const day = new Date(timeEntry.startTimestamp).toLocaleString("en-GB", {
+              weekday: "long",
+            });
+
+            return (
+              <React.Fragment key={timeEntry.id}>
+                {currentDate !== previousDate && (
+                  <Styled.DateWorkTimeWrapper>
+                    <Styled.Date>{`${day} ${formattedEntryDate(
+                      timeEntry.startTimestamp,
+                    )}`}</Styled.Date>
+                    <Styled.Date>
+                      {getDurationByDay(timeEntry.startTimestamp, timeEntries)}
+                    </Styled.Date>
+                  </Styled.DateWorkTimeWrapper>
+                )}
+                <TimeEntry {...timeEntry} />
+              </React.Fragment>
+            );
+          })}
         <Modal
           isActive={isModalActive}
           onClose={() => setIsModalActive(false)}
