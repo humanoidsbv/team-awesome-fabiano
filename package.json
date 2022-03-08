@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next & json-server --watch db.json --port 3004",
     "build": "next build",
+    "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "start": "next start"
   },
   "repository": {
