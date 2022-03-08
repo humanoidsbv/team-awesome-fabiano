@@ -16,7 +16,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
   const formRef = useRef<HTMLFormElement | null>(null);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const [newMemberEntry, setNewMemberEntry] = useState({
+  const initialTimeEntry = {
     client: "",
     emailAddress: "",
     firstName: "",
@@ -24,7 +24,8 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
     lastName: "",
     role: "",
     startingDate: "",
-  });
+  };
+  const [newMemberEntry, setNewMemberEntry] = useState(initialTimeEntry);
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsFormValid(formRef.current!.checkValidity());
@@ -37,6 +38,8 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
     handleAddButtonClick({
       ...newMemberEntry,
     });
+
+    setNewMemberEntry(initialTimeEntry);
   }
 
   return isActive
@@ -70,7 +73,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.firstName ?? ""}
+                      value={newMemberEntry.firstName}
                     />
                   </Styled.InputName>
                   <Styled.InputName>
@@ -80,7 +83,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.lastName ?? ""}
+                      value={newMemberEntry.lastName}
                     />
                   </Styled.InputName>
                 </Styled.FullName>
@@ -92,7 +95,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.emailAddress ?? ""}
+                      value={newMemberEntry.emailAddress}
                     />
                   </Styled.InputName>
                   <Styled.InputName>
@@ -102,7 +105,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.label ?? ""}
+                      value={newMemberEntry.label}
                     />
                   </Styled.InputName>
                   <Styled.InputName>
@@ -112,7 +115,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.client ?? ""}
+                      value={newMemberEntry.client}
                     />
                   </Styled.InputName>
                 </Styled.MiddleFields>
@@ -124,7 +127,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="text"
-                      value={newMemberEntry.role ?? ""}
+                      value={newMemberEntry.role}
                     />
                   </Styled.InputName>
                   <Styled.InputName>
@@ -134,7 +137,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
                       onChange={handleChange}
                       required
                       type="date"
-                      value={newMemberEntry.startingDate ?? ""}
+                      value={newMemberEntry.startingDate}
                     />
                   </Styled.InputName>
                 </Styled.FullName>

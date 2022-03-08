@@ -7,8 +7,14 @@ interface StoreContextProps {
   timeEntries: [
     timeEntries: Types.TimeEntryProps[],
     setTimeEntries: React.Dispatch<React.SetStateAction<Types.TimeEntryProps[]>>,
+  ];
+  teamMembers: [
     teamMembers: TeamMemberTypes.MemberEntryProps[],
     setTeamMembers: React.Dispatch<React.SetStateAction<TeamMemberTypes.MemberEntryProps[]>>,
+  ];
+  clients: [
+    clients: Types.ClientsProps[],
+    setClients: React.Dispatch<React.SetStateAction<Types.ClientsProps[]>>,
   ];
 }
 
@@ -20,6 +26,7 @@ interface StoreProviderProps {
 
 export function StoreProvider({ children }: StoreProviderProps) {
   const store = {
+    clients: useState<Types.ClientsProps[]>([]),
     timeEntries: useState<Types.TimeEntryProps[]>([]),
     teamMembers: useState<TeamMemberTypes.MemberEntryProps[]>([]),
   };

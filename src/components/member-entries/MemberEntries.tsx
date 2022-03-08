@@ -29,6 +29,44 @@ export const MemberEntries = (props: MemberEntriesProps) => {
     }
   }
 
+  const memberKeys = [
+    {
+      label: "First Name",
+      value: "firstName",
+    },
+    {
+      label: "Last Name",
+      value: "lastName",
+    },
+    {
+      label: "Email Address",
+      value: "emailAddress",
+    },
+    {
+      label: "Label",
+      value: "label",
+    },
+    {
+      label: "Client",
+      value: "client",
+    },
+    {
+      label: "Role",
+      value: "role",
+    },
+    {
+      label: "Starting Date",
+      value: "startingDate",
+    },
+  ];
+
+  const [memberSort, setMemberSort] = useState("firstName");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMemberSort(event.target.value);
+  };
+  console.log(teamMembers.memberSort);
+
   return (
     <>
       <SecondaryHeader
@@ -39,14 +77,21 @@ export const MemberEntries = (props: MemberEntriesProps) => {
         buttonOnClick={() => setIsMemberModalActive(true)}
         buttonIcon={true}
       />
-      <Styled.Container>
-        {teamMembers.map((teamMember) => {
-          return (
-            <React.Fragment key={teamMember.id}>
-              <MemberEntry {...teamMember} />
-            </React.Fragment>
-          );
+      <select onChange={handleChange}>
+        {memberKeys.map((memberKey) => {
+          return <option value={memberKey.value ?? ""}>{memberKey.label}</option>;
         })}
+      </select>
+      <Styled.Container>
+        {teamMembers
+          .sort((a, b) => a[memberSort].localeCompare(b[memberSort]))
+          .map((teamMember) => {
+            return (
+              <React.Fragment key={teamMember.id}>
+                <MemberEntry {...teamMember} />
+              </React.Fragment>
+            );
+          })}
         <MemberModal
           isActive={isMemberModalActive}
           onClose={() => setIsMemberModalActive(false)}
