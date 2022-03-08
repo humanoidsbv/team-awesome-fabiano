@@ -31,30 +31,37 @@ export const MemberEntries = (props: MemberEntriesProps) => {
 
   const memberKeys = [
     {
+      id: 55,
       label: "First Name",
       value: "firstName",
     },
     {
+      id: 56,
       label: "Last Name",
       value: "lastName",
     },
     {
+      id: 57,
       label: "Email Address",
       value: "emailAddress",
     },
     {
+      id: 58,
       label: "Label",
       value: "label",
     },
     {
+      id: 59,
       label: "Client",
       value: "client",
     },
     {
+      id: 60,
       label: "Role",
       value: "role",
     },
     {
+      id: 61,
       label: "Starting Date",
       value: "startingDate",
     },
@@ -86,7 +93,11 @@ export const MemberEntries = (props: MemberEntriesProps) => {
       />
       <select onChange={handleChange}>
         {memberKeys.map((memberKey) => {
-          return <option value={memberKey.value ?? ""}>{memberKey.label}</option>;
+          return (
+            <option key={memberKey.id} value={memberKey.value ?? ""}>
+              {memberKey.label}
+            </option>
+          );
         })}
       </select>
       <Styled.Container>
