@@ -37,7 +37,7 @@ export async function addTimeEntry(newTimeEntry: Types.TimeEntryProps) {
 
 export async function removeTimeEntry(id: number) {
   const response = await fetch(
-    "https://my-json-server.typicode.com/humanoidsbv/team-awesome-fabiano/time-entries/" + id,
+    `https://my-json-server.typicode.com/humanoidsbv/team-awesome-fabiano/time-entries/${id}`,
     {
       method: "DELETE",
       headers: {

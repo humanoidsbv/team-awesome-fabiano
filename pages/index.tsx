@@ -28,7 +28,6 @@ export const getServerSideProps = async () => {
 };
 
 const Homepage = ({ clients, timeEntries }: HomepageProps) => {
-  console.log(test);
   return (
     <>
       <StoreProvider>
