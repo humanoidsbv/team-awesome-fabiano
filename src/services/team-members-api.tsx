@@ -2,7 +2,7 @@ import { NotFoundError } from "../components/errors/NotFoundError";
 import * as Types from "../components/member-entries/MemberEntries.types";
 
 export async function getMemberEntries(): Promise<Types.MemberEntryProps[]> {
-  return fetch(`${process.env.NEXT_PUBLIC_DB_HOST}team-members`, {
+  return fetch(`${process.env.NEXT_PUBLIC_DB_HOST}/team-members`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export async function getMemberEntries(): Promise<Types.MemberEntryProps[]> {
 }
 
 export async function addMemberEntry(newMemberEntry: Types.MemberEntryProps) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}team-members`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}/team-members`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
