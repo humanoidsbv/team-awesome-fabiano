@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
-import { Header } from "../src/components/header/";
-import { TimeEntries } from "../src/components/time-entries/";
-import { PageContainer } from "../src/components/page-container/";
+import { Header } from "../src/components/header";
+import { TimeEntries } from "../src/components/time-entries";
+import { PageContainer } from "../src/components/page-container";
 import { theme } from "../styles/theme";
 import { getTimeEntries, getClients } from "../src/services/time-entries-api";
 import { StoreProvider } from "../src/components/context-provider/ContextProvider";

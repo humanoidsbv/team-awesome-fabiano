@@ -1,8 +1,9 @@
+import React, { useContext } from "react";
+
 import * as Styled from "./TimeEntry.styled";
 import * as Types from "../time-entries/TimeEntries.types";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
-import React, { useContext } from "react";
 import { removeTimeEntry } from "../../services/time-entries-api";
 import { StoreContext } from "../context-provider";
 

@@ -21,7 +21,9 @@
     "**/*.tsx",
     "src/components/header/Header.tsx",
     "pages/_document.jsx",
-    "pages/_app.jsx"
+    "pages/_app.jsx",
+    "jest.setup.js",
+    "jest.config.js"
   ],
   "exclude": ["node_modules"]
 }

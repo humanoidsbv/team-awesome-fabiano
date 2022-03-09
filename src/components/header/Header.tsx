@@ -1,12 +1,11 @@
+import React, { useState } from "react";
+import Link from "next/link";
 import * as Styled from "./Header.styled";
 
 import CloseIcon from "../../../public/icons/close.svg";
 import HamburgerIcon from "../../../public/icons/hamburger.svg";
 
-import React, { useState } from "react";
-import Link from "next/link";
-
-import { AccountButton } from "../accountbutton/";
+import { AccountButton } from "../accountbutton";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -22,7 +21,7 @@ export const Header = () => {
           </li>
           <li>
             <Link href="/team-members">
-              <a>Team members</a>
+              <a href="/team-members">Team members</a>
             </Link>
           </li>
           <li>
