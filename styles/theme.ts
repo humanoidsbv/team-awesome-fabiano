@@ -1,5 +1,5 @@
 export const theme = {
-  //Colors
+  // Colors
   blue1: "#4f88ef",
   blue2: "#1166a5",
   green1: "#37B047",
@@ -13,7 +13,7 @@ export const theme = {
   grey6: "#4B5464",
   red1: "#FFA2AD",
 
-  //Fonts
+  // Fonts
   fontPrimary: "Proxima Nova",
   fontSecondary: "Bello Script",
 
