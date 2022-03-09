@@ -41,7 +41,10 @@ export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: Types.T
           <Styled.WorkTime>{formattedWorkHours}</Styled.WorkTime>
         </Styled.TotalWorkHours>
       </Styled.LocationHoursWrapper>
-      <Styled.TrashButton onClick={handleDelete}>
+      <Styled.TrashButton
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={handleDelete}
+      >
         <TrashBinIcon />
       </Styled.TrashButton>
     </Styled.TimeEntry>
