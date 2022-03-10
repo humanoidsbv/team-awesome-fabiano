@@ -5,7 +5,7 @@ jobs:
     name: Build application
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Setup Node.js
@@ -22,3 +22,17 @@ jobs:
 
       - name: 🧹 Run lint
         run: npm run lint
+
+  jobs:
+    cypress-run:
+      name: Cypress Tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Cypress run
+          uses: cypress-io/github-action@v2
+          with:
+            build: npm run build
+            start: npm start
