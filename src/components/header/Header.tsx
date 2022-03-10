@@ -15,7 +15,7 @@ export const Header = () => {
     <Styled.Container>
       <Styled.Wrapper>
         <Styled.Logo href="/">team awesome</Styled.Logo>
-        <Styled.MenuList {...{ isActive }}>
+        <Styled.MenuList data-cy="menulist" {...{ isActive }}>
           <li>
             <a href="/">Timesheets</a>
           </li>
@@ -34,7 +34,7 @@ export const Header = () => {
             <a href="/">Documents</a>
           </li>
         </Styled.MenuList>
-        <Styled.ToggleButton onClick={handleClick}>
+        <Styled.ToggleButton data-cy="toggle" onClick={handleClick}>
           {isActive ? <CloseIcon /> : <HamburgerIcon />}
         </Styled.ToggleButton>
       </Styled.Wrapper>

@@ -14,7 +14,7 @@ interface ButtonProps {
 
 export const Button = ({ onClick, label, kind = "primary", icon, disabled }: ButtonProps) => {
   return (
-    <Styled.Button {...{ onClick, kind, icon, disabled }}>
+    <Styled.Button data-cy="new-button" {...{ onClick, kind, icon, disabled }}>
       {icon && <PlusIcon fill="#fff" />}
       {label}
     </Styled.Button>
