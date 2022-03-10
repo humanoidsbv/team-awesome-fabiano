@@ -23,16 +23,16 @@ jobs:
       - name: 🧹 Run lint
         run: npm run lint
 
-  jobs:
-    cypress-run:
-      name: Cypress Tests
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
+jobs:
+  cypress-run:
+    name: Cypress Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-        - name: Cypress run
-          uses: cypress-io/github-action@v2
-          with:
-            build: npm run build
-            start: npm start
+       - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
