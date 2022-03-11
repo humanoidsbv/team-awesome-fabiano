@@ -14,7 +14,7 @@ describe("Routing", () => {
 
     cy.get("select").select(4).should("have.value", "client");
 
-    cy.get("[data-cy=new-button]").click();
+    cy.get("[data-cy=generic-button]").click();
     cy.get("[name=firstName]").type("Ursula");
     cy.get("[name=lastName]").type("Le Guin");
     cy.get("[name=emailAddress]").type("ursula@leguin.com");
@@ -23,7 +23,7 @@ describe("Routing", () => {
     cy.get("[name=role]").type("Navigator");
     cy.get("[name=startingDate]").type("2022-03-14");
 
-    cy.get("[data-cy=new-button]").contains("Add Humanoid").click();
+    cy.get("[data-cy=generic-button]").contains("Add Humanoid").click();
 
     cy.intercept(
       {

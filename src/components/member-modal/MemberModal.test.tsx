@@ -5,7 +5,7 @@ describe("Close member modal", () => {
   const onClose = jest.fn();
   const handleAddButtonClick = jest.fn();
 
-  it("Press cancel, onClose gets called", () => {
+  test("if clicking cancel button closes modal", () => {
     render(<MemberModal handleAddButtonClick={handleAddButtonClick} isActive onClose={onClose} />);
 
     const cancel = screen.getByText("Cancel");

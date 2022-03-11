@@ -147,7 +147,6 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
             <Styled.ButtonContainer>
               <Button label="Cancel" kind="secondary" onClick={onClose} />
               <Button
-                data-cy="addHumanoid"
                 disabled={!isFormValid}
                 label="Add Humanoid"
                 onClick={(event) => handleSubmit(event)}
