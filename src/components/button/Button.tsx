@@ -1,4 +1,4 @@
-import React from "react";
+import { MouseEvent } from "react";
 
 import * as Styled from "./Button.styled";
 
@@ -6,7 +6,7 @@ import PlusIcon from "../../../public/icons/plus-icon.svg";
 
 interface ButtonProps {
   label: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   kind?: "primary" | "secondary";
   icon?: boolean;
   disabled?: boolean;

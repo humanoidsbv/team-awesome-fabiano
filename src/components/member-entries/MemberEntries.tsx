@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { ChangeEvent, useEffect, useState, useContext, Fragment } from "react";
 
 import * as Styled from "./MemberEntries.styled";
 import * as Types from "./MemberEntries.types";
@@ -78,7 +78,7 @@ export const MemberEntries = (props: MemberEntriesProps) => {
     | "role"
     | "startingDate";
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setMemberSort(event.target.value);
   };
 
@@ -108,9 +108,9 @@ export const MemberEntries = (props: MemberEntriesProps) => {
           )
           .map((teamMember) => {
             return (
-              <React.Fragment key={teamMember.id}>
+              <Fragment key={teamMember.id}>
                 <MemberEntry {...teamMember} />
-              </React.Fragment>
+              </Fragment>
             );
           })}
         <MemberModal
