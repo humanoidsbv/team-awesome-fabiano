@@ -21,7 +21,7 @@
       "id": 352
     }
   ],
-  "time-entries": [
+  "timeEntries": [
     {
       "client": "Kunsthal",
       "stopTimestamp": "2022-01-10T16:30:00.000Z",
@@ -61,7 +61,7 @@
       "id": 6
     }
   ],
-  "team-members": [
+  "teamMembers": [
     {
       "firstName": "Fabiano",
       "lastName": "van Gool",
