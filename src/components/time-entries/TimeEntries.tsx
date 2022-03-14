@@ -1,9 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { useEffect, useState, useContext } from "react";
 
 import * as Styled from "./TimeEntries.styled";
-import * as Types from "../time-entries/TimeEntries.types";
+import * as Types from "./TimeEntries.types";
 
-import { TimeEntry } from "../time-entry/";
+import { TimeEntry } from "../time-entry";
 import { Modal } from "../modal";
 import { SecondaryHeader } from "../subheader";
 import { addTimeEntry } from "../../services/time-entries-api";
@@ -16,7 +17,7 @@ interface TimeEntriesProps {
 
 export const TimeEntries = (props: TimeEntriesProps) => {
   const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = state.timeEntries;
+  const [timeEntries, setTimeEntries] = useState(props.timeEntries);
   const [isModalActive, setIsModalActive] = useState(false);
   const [clients, setClients] = state.clients;
 
@@ -32,10 +33,6 @@ export const TimeEntries = (props: TimeEntriesProps) => {
     }
   }
 
-  timeEntries.sort(function (a, b) {
-    return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
-  });
-
   const formattedEntryDate = (date: string) => {
     const formattedDate = new Date(date);
 
@@ -47,12 +44,12 @@ export const TimeEntries = (props: TimeEntriesProps) => {
   };
 
   const formatDuration = (duration: number) => {
-    const hours = Number.parseInt(String(duration / 1000 / 60 / 60)).toString();
-    const minutes = Number.parseInt(String((duration / 1000 / 60) % 60)).toString();
+    const hours = Number.parseInt(String(duration / 1000 / 60 / 60), 10).toString();
+    const minutes = Number.parseInt(String((duration / 1000 / 60) % 60), 10).toString();
     return `${hours.padStart(2, "0")}:${minutes.padStart(2, "0")}`;
   };
 
-  const getDurationByDay = (isoDate: string, timeEntries: Types.TimeEntryProps[]) => {
+  const getDurationByDay = (isoDate: string, _timeEntries: Types.TimeEntryProps[]) => {
     const calculateDuration = ({
       startTimestamp,
       stopTimestamp,
@@ -63,7 +60,7 @@ export const TimeEntries = (props: TimeEntriesProps) => {
       return new Date(stopTimestamp).getTime() - new Date(startTimestamp).getTime();
     };
 
-    const duration = timeEntries
+    const duration = _timeEntries
       .filter(
         ({ startTimestamp }) =>
           new Date(startTimestamp).toDateString() === new Date(isoDate).toDateString(),
@@ -87,7 +84,7 @@ export const TimeEntries = (props: TimeEntriesProps) => {
         buttonLabel="New time entry"
         buttonKind="primary"
         buttonOnClick={() => setIsModalActive(true)}
-        buttonIcon={true}
+        buttonIcon
       />
       <select onChange={handleChange}>
         {clients.map((client: Types.ClientsProps) => {
@@ -96,6 +93,9 @@ export const TimeEntries = (props: TimeEntriesProps) => {
       </select>
       <Styled.Container>
         {timeEntries
+          .sort((a, b) => {
+            return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
+          })
           .filter((entry) => (clientFilter !== "" ? entry.client === clientFilter : true))
           .map((timeEntry: Types.TimeEntryProps, i, array) => {
             const currentDate = formattedEntryDate(timeEntry.startTimestamp);
@@ -108,9 +108,9 @@ export const TimeEntries = (props: TimeEntriesProps) => {
               <React.Fragment key={timeEntry.id}>
                 {currentDate !== previousDate && (
                   <Styled.DateWorkTimeWrapper>
-                    <Styled.Date>{`${day} ${formattedEntryDate(
-                      timeEntry.startTimestamp,
-                    )}`}</Styled.Date>
+                    <Styled.Date>
+                      {`${day} ${formattedEntryDate(timeEntry.startTimestamp)}`}
+                    </Styled.Date>
                     <Styled.Date>
                       {getDurationByDay(timeEntry.startTimestamp, timeEntries)}
                     </Styled.Date>
@@ -123,6 +123,7 @@ export const TimeEntries = (props: TimeEntriesProps) => {
         <Modal
           isActive={isModalActive}
           onClose={() => setIsModalActive(false)}
+          // eslint-disable-next-line react/jsx-no-bind
           handleAddButtonClick={handleClick}
         />
       </Styled.Container>

@@ -1,9 +1,9 @@
+import { createPortal } from "react-dom";
+import React, { useRef, useState } from "react";
+
 import * as Styled from "./MemberModal.styled";
 import * as Types from "../member-entries/MemberEntries.types";
 
-import React, { useRef, useState } from "react";
-
-import { createPortal } from "react-dom";
 import { Button } from "../button";
 
 import CloseArrowIcon from "../../../public/icons/close-arrow.svg";
@@ -32,7 +32,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
     setNewMemberEntry({ ...newMemberEntry, [target.name]: target.value });
   };
 
-  function handleSubmit(event: any) {
+  function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
     handleAddButtonClick({
@@ -44,6 +44,7 @@ export const MemberModal: React.FC<Types.MemberModalProps> = ({
 
   return isActive
     ? createPortal(
+        // eslint-disable-next-line react/jsx-indent
         <Styled.Container onClick={onClose}>
           <Styled.MemberModal
             role="dialog"

@@ -25,14 +25,14 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
     setNewTimeEntry({ ...newTimeEntry, [target.name]: target.value });
   };
 
-  function handleSubmit(event: any) {
+  function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
     const startTimestamp = new Date(
-      newTimeEntry.date + " " + newTimeEntry.startTimestamp,
+      `${newTimeEntry.date} ${newTimeEntry.startTimestamp}`,
     ).toISOString();
     const stopTimestamp = new Date(
-      newTimeEntry.date + " " + newTimeEntry.stopTimestamp,
+      `${newTimeEntry.date} ${newTimeEntry.stopTimestamp}`,
     ).toISOString();
 
     handleAddButtonClick({
@@ -46,6 +46,7 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
 
   return isActive
     ? createPortal(
+        // eslint-disable-next-line react/jsx-indent
         <Styled.Container onClick={onClose}>
           <Styled.Modal
             aria-labelledby="dialog"

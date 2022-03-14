@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import { ChangeEvent, useEffect, useState, useContext, Fragment } from "react";
 
 import * as Styled from "./MemberEntries.styled";
-import * as Types from "../member-entries/MemberEntries.types";
+import * as Types from "./MemberEntries.types";
 
 import { SecondaryHeader } from "../subheader";
 import { MemberEntry } from "../member-entry";
@@ -15,10 +15,11 @@ interface MemberEntriesProps {
 
 export const MemberEntries = (props: MemberEntriesProps) => {
   const state = useContext(StoreContext);
-  const [teamMembers, setTeamMembers] = useState(props.teamMembers);
+  const [teamMembers, setTeamMembers] = state.teamMembers;
   const [isMemberModalActive, setIsMemberModalActive] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react/destructuring-assignment
     setTeamMembers(props.teamMembers);
   }, []);
 
@@ -77,14 +78,14 @@ export const MemberEntries = (props: MemberEntriesProps) => {
     | "role"
     | "startingDate";
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setMemberSort(event.target.value);
   };
 
   return (
     <>
       <SecondaryHeader
-        buttonIcon={true}
+        buttonIcon
         buttonKind="primary"
         buttonLabel="New Humanoid"
         buttonOnClick={() => setIsMemberModalActive(true)}
@@ -107,12 +108,13 @@ export const MemberEntries = (props: MemberEntriesProps) => {
           )
           .map((teamMember) => {
             return (
-              <React.Fragment key={teamMember.id}>
+              <Fragment key={teamMember.id}>
                 <MemberEntry {...teamMember} />
-              </React.Fragment>
+              </Fragment>
             );
           })}
         <MemberModal
+          // eslint-disable-next-line react/jsx-no-bind
           handleAddButtonClick={handleClick}
           isActive={isMemberModalActive}
           onClose={() => setIsMemberModalActive(false)}

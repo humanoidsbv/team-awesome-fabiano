@@ -1,6 +1,6 @@
-import * as Styled from "./Subheader.styled";
+import React from "react";
 
-import React, { useState } from "react";
+import * as Styled from "./Subheader.styled";
 
 import { Button } from "../button";
 

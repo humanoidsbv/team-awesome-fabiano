@@ -4,6 +4,7 @@ import { PageContainer } from "../../src/components/page-container";
 import { getMemberEntries } from "../../src/services/team-members-api";
 
 import * as Types from "../../src/components/member-entries/MemberEntries.types";
+import { StoreProvider } from "../../src/components/context-provider";
 
 interface TeamMembersProps {
   teamMembers: Types.MemberEntryProps[];
@@ -22,10 +23,12 @@ export const getServerSideProps = async () => {
 const TeamMembers = ({ teamMembers }: TeamMembersProps) => {
   return (
     <>
-      <Header />
-      <PageContainer>
-        <MemberEntries {...{ teamMembers }} />
-      </PageContainer>
+      <StoreProvider>
+        <Header />
+        <PageContainer>
+          <MemberEntries {...{ teamMembers }} />
+        </PageContainer>
+      </StoreProvider>
     </>
   );
 };

@@ -1,8 +1,9 @@
+import React, { useContext } from "react";
+
 import * as Styled from "./TimeEntry.styled";
 import * as Types from "../time-entries/TimeEntries.types";
 
 import TrashBinIcon from "../../../public/icons/trash-bin.svg";
-import React, { useContext } from "react";
 import { removeTimeEntry } from "../../services/time-entries-api";
 import { StoreContext } from "../context-provider";
 
@@ -40,7 +41,10 @@ export const TimeEntry = ({ id, client, startTimestamp, stopTimestamp }: Types.T
           <Styled.WorkTime>{formattedWorkHours}</Styled.WorkTime>
         </Styled.TotalWorkHours>
       </Styled.LocationHoursWrapper>
-      <Styled.TrashButton onClick={handleDelete}>
+      <Styled.TrashButton
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={handleDelete}
+      >
         <TrashBinIcon />
       </Styled.TrashButton>
     </Styled.TimeEntry>

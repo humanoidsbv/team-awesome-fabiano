@@ -1,7 +1,5 @@
 import * as Styled from "./MemberEntry.styled";
 import * as Types from "../member-entries/MemberEntries.types";
-import { useContext } from "react";
-import { StoreContext } from "../context-provider";
 
 export const MemberEntry = ({
   client,
@@ -10,8 +8,6 @@ export const MemberEntry = ({
   role,
   startingDate,
 }: Types.MemberEntryProps) => {
-  const state = useContext(StoreContext);
-
   const formattedStartingDate = new Date(startingDate).toLocaleString("en-GB", {
     month: "long",
     year: "numeric",
