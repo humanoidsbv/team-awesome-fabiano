@@ -1,7 +1,14 @@
-import React from "react";
-import { action } from "@storybook/addon-actions";
+import { MouseEvent } from "react";
 
 import { Button } from "../components/button";
+
+interface ButtonProps {
+  label: string;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  kind?: "primary" | "secondary";
+  icon?: boolean;
+  disabled?: boolean;
+}
 
 export default {
   title: "Button",
@@ -15,9 +22,4 @@ export default {
   },
 };
 
-export const Template = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-  kind: "primary",
-};
+export const Template = (args: ButtonProps) => <Button {...args} />;
