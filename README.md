@@ -19,8 +19,6 @@ For this app Node and NPM are required.
 #Homebrew is used as package manager and Formulae is used as package browser. If you don't have these installed yet, here's how to do that:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install [package]
-
 #To install Node and NPM:
 brew install node
 
@@ -36,8 +34,9 @@ The technologies used in this project are:
 - ESLint: for code linting
 - Typescript: for more reliable code
 - Vercel: for deployment of the app on GitHub
-- Jest: for running unit and end-to-end tests
-- Storybook:
+- Jest: for running unit tests
+- Cypress: for running end-to-end tests
+- Storybook: for a visual documentation and test environment of components
 
 ## Usage
 

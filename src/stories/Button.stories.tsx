@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
 
+import { Meta, Story } from "@storybook/react";
 import { Button } from "../components/button";
 
 interface ButtonProps {
@@ -14,12 +15,21 @@ export default {
   title: "Button",
   component: Button,
   argTypes: {
-    onClick: { action: "clicked" },
-    variant: {
-      kind: ["secondary", "primary"],
-      control: { type: "select" },
-    },
+    label: { defaultValue: "Button" },
+    kind: ["secondary", "primary"],
   },
+} as Meta;
+
+export const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  icon: true,
+  kind: "primary",
 };
 
-export const Template = (args: ButtonProps) => <Button {...args} />;
+export const Secondary = Template.bind({});
+Secondary.args = {
+  icon: true,
+  kind: "secondary",
+};
