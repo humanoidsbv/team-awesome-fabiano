@@ -21,7 +21,7 @@ For this app Node and NPM are required.
 
 brew install [package]
 
-#Then, to install Node and NPM:
+#To install Node and NPM:
 brew install node
 
 #To install the necessary dependencies from the package.json:
@@ -58,11 +58,12 @@ npm run test
 
 ### Functionality
 
-Time entries can be added
+- Time entries can be added with the "New time entry" button, which opens a modal with a form that can be submitted. Likewise, team members can be added with the "New Humanoid" button.
+- Both time entries and team members can be filtered with the select drop-down list.
 
 ## Contributing
 
-Pull requests are welcome. Before push, please make sure to run all tests. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. Before pushing, please make sure to run all tests. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Authors and acknowledgment
 
