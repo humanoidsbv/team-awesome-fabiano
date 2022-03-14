@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 describe("Routing", () => {
   it("Navigates to the Team members page, adds a new Team Member and submits the form", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("https://team-awesome-fabiano-ne6o9xrg3-humanoidsbv.vercel.app/");
     cy.viewport(414, 896);
 
     cy.get("select").select(4).should("have.value", "Drentse Aa Zuivel");
