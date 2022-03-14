@@ -56,6 +56,10 @@ npm run storybook
 npm run test
 ```
 
+### Functionality
+
+Time entries can be added
+
 ## Contributing
 
 Pull requests are welcome. Before push, please make sure to run all tests. For major changes, please open an issue first to discuss what you would like to change.
