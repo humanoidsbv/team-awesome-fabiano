@@ -21,7 +21,7 @@ export const TimeEntries = (props: TimeEntriesProps) => {
   const state = useContext(StoreContext);
   const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState(false);
-  const [clients, setClients] = useState(props.clients);
+  const [clients, setClients] = state.clients;
 
   useEffect(() => {
     setTimeEntries(props.timeEntries);
