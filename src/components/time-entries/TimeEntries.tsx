@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { useMutation } from "@apollo/client";
 
@@ -10,6 +10,7 @@ import { TimeEntry } from "../time-entry";
 import { Modal } from "../modal";
 import { SecondaryHeader } from "../subheader";
 import { CREATE_TIME_ENTRY } from "../../services/mutations";
+import { StoreContext } from "../context-provider";
 
 interface TimeEntriesProps {
   timeEntries: Types.TimeEntryProps[];
@@ -17,7 +18,8 @@ interface TimeEntriesProps {
 }
 
 export const TimeEntries = (props: TimeEntriesProps) => {
-  const [timeEntries, setTimeEntries] = useState(props.timeEntries);
+  const state = useContext(StoreContext);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState(false);
   const [clients, setClients] = useState(props.clients);
 

@@ -44,20 +44,18 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Homepage = ({ clients, timeEntries }: HomepageProps) => {
-  return (
-    <>
-      <StoreProvider>
-        <GlobalStyle />
-        <ThemeProvider {...{ theme }}>
-          <Header />
-          <PageContainer>
-            <TimeEntries {...{ clients, timeEntries }} />
-          </PageContainer>
-        </ThemeProvider>
-      </StoreProvider>
-    </>
-  );
-};
+const Homepage = ({ clients, timeEntries }: HomepageProps) => (
+  <>
+    <StoreProvider>
+      <GlobalStyle />
+      <ThemeProvider {...{ theme }}>
+        <Header />
+        <PageContainer>
+          <TimeEntries {...{ clients, timeEntries }} />
+        </PageContainer>
+      </ThemeProvider>
+    </StoreProvider>
+  </>
+);
 
 export default Homepage;
