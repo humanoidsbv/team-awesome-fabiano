@@ -1,24 +1,24 @@
 {
   "clients": [
     {
-      "name": "Kunsthal",
-      "id": 348
+      "id": 348,
+      "name": "Kunsthal"
     },
     {
-      "name": "Gemeente Rotterdam",
-      "id": 349
+      "id": 349,
+      "name": "Gemeente Rotterdam"
     },
     {
-      "name": "Sequential Circuits",
-      "id": 350
+      "id": 350,
+      "name": "Sequential Circuits"
     },
     {
-      "name": "Foam",
-      "id": 351
+      "id": 351,
+      "name": "Foam"
     },
     {
-      "name": "Drentse Aa Zuivel",
-      "id": 352
+      "id": 352,
+      "name": "Drentse Aa Zuivel"
     }
   ],
   "timeEntries": [
