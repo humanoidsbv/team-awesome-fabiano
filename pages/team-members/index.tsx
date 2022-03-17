@@ -6,14 +6,14 @@ import { PageContainer } from "../../src/components/page-container";
 import * as Types from "../../src/components/member-entries/MemberEntries.types";
 import { StoreProvider } from "../../src/components/context-provider";
 
-import { Client } from "../../apollo-client";
+import { client } from "../../apollo-client";
 
 interface TeamMembersProps {
   teamMembers: Types.MemberEntryProps[];
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await Client.query({
+  const { data } = await client.query({
     query: gql`
       query GetTeamMembers {
         allTeamMembers {

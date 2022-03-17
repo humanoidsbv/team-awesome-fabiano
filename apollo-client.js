@@ -1,6 +1,6 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 
-export const Client = new ApolloClient({
+export const client = new ApolloClient({
   ssrMode: true,
   link: createHttpLink({
     uri: "http://localhost:3333",
