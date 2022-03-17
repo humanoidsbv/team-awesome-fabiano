@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState, useContext, Fragment } from "react";
 
+import { useMutation } from "@apollo/client";
 import * as Styled from "./MemberEntries.styled";
 import * as Types from "./MemberEntries.types";
 
@@ -7,7 +8,7 @@ import { SecondaryHeader } from "../subheader";
 import { MemberEntry } from "../member-entry";
 import { MemberModal } from "../member-modal";
 import { StoreContext } from "../context-provider";
-import { addMemberEntry } from "../../services/team-members-api";
+import { CREATE_TEAM_MEMBER } from "../../services/mutations";
 
 interface MemberEntriesProps {
   teamMembers: Types.MemberEntryProps[];
@@ -23,11 +24,22 @@ export const MemberEntries = (props: MemberEntriesProps) => {
     setTeamMembers(props.teamMembers);
   }, []);
 
+  const [addTeamMember] = useMutation(CREATE_TEAM_MEMBER, {
+    onCompleted: (data) => setTeamMembers([...teamMembers, data.createTeamMember]),
+  });
+
   async function handleClick(newMemberEntry: Types.MemberEntryProps) {
-    const formattedNewEntry = await addMemberEntry(newMemberEntry);
-    if (formattedNewEntry) {
-      setTeamMembers([...teamMembers, formattedNewEntry]);
-    }
+    addTeamMember({
+      variables: {
+        firstName: newMemberEntry.firstName,
+        lastName: newMemberEntry.lastName,
+        emailAddress: newMemberEntry.emailAddress,
+        label: newMemberEntry.label,
+        client: newMemberEntry.client,
+        role: newMemberEntry.role,
+        startingDate: newMemberEntry.startingDate,
+      },
+    });
   }
 
   const memberKeys = [

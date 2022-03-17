@@ -1,36 +1,49 @@
+import { gql } from "@apollo/client";
 import { Header } from "../../src/components/header";
 import { MemberEntries } from "../../src/components/member-entries";
 import { PageContainer } from "../../src/components/page-container";
-import { getMemberEntries } from "../../src/services/team-members-api";
 
 import * as Types from "../../src/components/member-entries/MemberEntries.types";
 import { StoreProvider } from "../../src/components/context-provider";
+
+import { client } from "../../apollo-client";
 
 interface TeamMembersProps {
   teamMembers: Types.MemberEntryProps[];
 }
 
 export const getServerSideProps = async () => {
-  const teamMembers = await getMemberEntries();
+  const { data } = await client.query({
+    query: gql`
+      query GetTeamMembers {
+        allTeamMembers {
+          client
+          emailAddress
+          firstName
+          id
+          label
+          lastName
+          role
+          startingDate
+        }
+      }
+    `,
+  });
 
   return {
     props: {
-      teamMembers,
+      teamMembers: data.allTeamMembers,
     },
   };
 };
 
-const TeamMembers = ({ teamMembers }: TeamMembersProps) => {
-  return (
-    <>
-      <StoreProvider>
-        <Header />
-        <PageContainer>
-          <MemberEntries {...{ teamMembers }} />
-        </PageContainer>
-      </StoreProvider>
-    </>
-  );
-};
+const TeamMembers = ({ teamMembers }: TeamMembersProps) => (
+  <StoreProvider>
+    <Header />
+    <PageContainer>
+      <MemberEntries {...{ teamMembers }} />
+    </PageContainer>
+  </StoreProvider>
+);
 
 export default TeamMembers;

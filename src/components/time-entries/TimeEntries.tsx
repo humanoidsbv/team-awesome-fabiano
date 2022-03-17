@@ -1,5 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
+import { useMutation } from "@apollo/client";
 
 import * as Styled from "./TimeEntries.styled";
 import * as Types from "./TimeEntries.types";
@@ -7,8 +9,8 @@ import * as Types from "./TimeEntries.types";
 import { TimeEntry } from "../time-entry";
 import { Modal } from "../modal";
 import { SecondaryHeader } from "../subheader";
-import { addTimeEntry } from "../../services/time-entries-api";
-import { StoreContext } from "../context-provider/ContextProvider";
+import { CREATE_TIME_ENTRY } from "../../services/mutations";
+import { StoreContext } from "../context-provider";
 
 interface TimeEntriesProps {
   timeEntries: Types.TimeEntryProps[];
@@ -17,7 +19,7 @@ interface TimeEntriesProps {
 
 export const TimeEntries = (props: TimeEntriesProps) => {
   const state = useContext(StoreContext);
-  const [timeEntries, setTimeEntries] = useState(props.timeEntries);
+  const [timeEntries, setTimeEntries] = state.timeEntries;
   const [isModalActive, setIsModalActive] = useState(false);
   const [clients, setClients] = state.clients;
 
@@ -26,11 +28,19 @@ export const TimeEntries = (props: TimeEntriesProps) => {
     setClients(props.clients);
   }, []);
 
+  const [addTimeEntry] = useMutation(CREATE_TIME_ENTRY, {
+    onCompleted: (data) => setTimeEntries([...timeEntries, data.createTimeEntry]),
+  });
+
   async function handleClick(newTimeEntry: Types.TimeEntryProps) {
-    const formattedNewEntry = await addTimeEntry(newTimeEntry);
-    if (formattedNewEntry) {
-      setTimeEntries([...timeEntries, formattedNewEntry]);
-    }
+    addTimeEntry({
+      variables: {
+        activity: newTimeEntry.activity,
+        client: newTimeEntry.client,
+        stopTimestamp: newTimeEntry.stopTimestamp,
+        startTimestamp: newTimeEntry.startTimestamp,
+      },
+    });
   }
 
   const formattedEntryDate = (date: string) => {
@@ -88,14 +98,18 @@ export const TimeEntries = (props: TimeEntriesProps) => {
       />
       <select onChange={handleChange}>
         {clients.map((client: Types.ClientsProps) => {
-          return <option value={client.name ?? ""}>{client.name}</option>;
+          return (
+            <option key={client.id} value={client.name ?? ""}>
+              {client.name}
+            </option>
+          );
         })}
       </select>
       <Styled.Container>
-        {timeEntries
-          .sort((a, b) => {
-            return new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime();
-          })
+        {[...timeEntries]
+          .sort(
+            (a, b) => new Date(b.startTimestamp).getTime() - new Date(a.startTimestamp).getTime(),
+          )
           .filter((entry) => (clientFilter !== "" ? entry.client === clientFilter : true))
           .map((timeEntry: Types.TimeEntryProps, i, array) => {
             const currentDate = formattedEntryDate(timeEntry.startTimestamp);

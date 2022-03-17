@@ -51,7 +51,7 @@ export const Modal = ({ isActive, onClose, handleAddButtonClick }: Types.ModalPr
           <Styled.Modal
             aria-labelledby="dialog"
             aria-modal="true"
-            onClick={(event) => {
+            onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               event.stopPropagation();
             }}
             role="dialog"
