@@ -9,7 +9,7 @@ import { StoreProvider } from "../src/components/context-provider/ContextProvide
 import GlobalStyle from "../styles/global";
 
 import * as Types from "../src/components/time-entries/TimeEntries.types";
-import client from "../apollo-client";
+import { Client } from "../apollo-client";
 
 interface HomepageProps {
   timeEntries: Types.TimeEntryProps[];
@@ -17,7 +17,7 @@ interface HomepageProps {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await client.query({
+  const { data } = await Client.query({
     query: gql`
       query GetTimeEntries {
         allTimeEntries {
@@ -45,17 +45,15 @@ export const getServerSideProps = async () => {
 };
 
 const Homepage = ({ clients, timeEntries }: HomepageProps) => (
-  <>
-    <StoreProvider>
-      <GlobalStyle />
-      <ThemeProvider {...{ theme }}>
-        <Header />
-        <PageContainer>
-          <TimeEntries {...{ clients, timeEntries }} />
-        </PageContainer>
-      </ThemeProvider>
-    </StoreProvider>
-  </>
+  <StoreProvider>
+    <GlobalStyle />
+    <ThemeProvider {...{ theme }}>
+      <Header />
+      <PageContainer>
+        <TimeEntries {...{ clients, timeEntries }} />
+      </PageContainer>
+    </ThemeProvider>
+  </StoreProvider>
 );
 
 export default Homepage;

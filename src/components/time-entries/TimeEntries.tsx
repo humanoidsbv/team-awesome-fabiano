@@ -28,7 +28,9 @@ export const TimeEntries = (props: TimeEntriesProps) => {
     setClients(props.clients);
   }, []);
 
-  const [addTimeEntry, { data }] = useMutation(CREATE_TIME_ENTRY);
+  const [addTimeEntry] = useMutation(CREATE_TIME_ENTRY, {
+    onCompleted: (data) => setTimeEntries([...timeEntries, data.createTimeEntry]),
+  });
 
   async function handleClick(newTimeEntry: Types.TimeEntryProps) {
     addTimeEntry({
@@ -40,12 +42,6 @@ export const TimeEntries = (props: TimeEntriesProps) => {
       },
     });
   }
-
-  useEffect(() => {
-    if (data) {
-      setTimeEntries([...timeEntries, data.createTimeEntry]);
-    }
-  }, [data]);
 
   const formattedEntryDate = (date: string) => {
     const formattedDate = new Date(date);

@@ -6,14 +6,14 @@ import { PageContainer } from "../../src/components/page-container";
 import * as Types from "../../src/components/member-entries/MemberEntries.types";
 import { StoreProvider } from "../../src/components/context-provider";
 
-import client from "../../apollo-client";
+import { Client } from "../../apollo-client";
 
 interface TeamMembersProps {
   teamMembers: Types.MemberEntryProps[];
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await client.query({
+  const { data } = await Client.query({
     query: gql`
       query GetTeamMembers {
         allTeamMembers {
@@ -38,14 +38,12 @@ export const getServerSideProps = async () => {
 };
 
 const TeamMembers = ({ teamMembers }: TeamMembersProps) => (
-  <>
-    <StoreProvider>
-      <Header />
-      <PageContainer>
-        <MemberEntries {...{ teamMembers }} />
-      </PageContainer>
-    </StoreProvider>
-  </>
+  <StoreProvider>
+    <Header />
+    <PageContainer>
+      <MemberEntries {...{ teamMembers }} />
+    </PageContainer>
+  </StoreProvider>
 );
 
 export default TeamMembers;

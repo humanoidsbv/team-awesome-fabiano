@@ -24,7 +24,9 @@ export const MemberEntries = (props: MemberEntriesProps) => {
     setTeamMembers(props.teamMembers);
   }, []);
 
-  const [addTeamMember, { data }] = useMutation(CREATE_TEAM_MEMBER);
+  const [addTeamMember] = useMutation(CREATE_TEAM_MEMBER, {
+    onCompleted: (data) => setTeamMembers([...teamMembers, data.createTeamMember]),
+  });
 
   async function handleClick(newMemberEntry: Types.MemberEntryProps) {
     addTeamMember({
@@ -39,12 +41,6 @@ export const MemberEntries = (props: MemberEntriesProps) => {
       },
     });
   }
-
-  useEffect(() => {
-    if (data) {
-      setTeamMembers([...teamMembers, data.createTeamMember]);
-    }
-  }, [data]);
 
   const memberKeys = [
     {
